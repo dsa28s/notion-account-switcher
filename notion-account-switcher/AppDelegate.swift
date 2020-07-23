@@ -1,18 +1,14 @@
+// Copyright (c) 2020 Dora Lee
 //
-//  AppDelegate.swift
-//  notion-account-switcher
-//
-//  Created by 도라도라 on 2020/07/23.
-//  Copyright © 2020 Dora Lee. All rights reserved.
-//
+// Project : Notion Account Switcher for macOS
+// File Name : AppDelegate.swift
+// Description : App Entrypoint
+// Author: Dora Lee <lee@sanghun.io>
 
 import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
     }

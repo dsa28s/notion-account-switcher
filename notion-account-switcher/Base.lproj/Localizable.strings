@@ -1,0 +1,10 @@
+// Copyright (c) 2020 Dora Lee
+//
+// Project : Notion Account Switcher for macOS
+// File Name : Localizable.strings/Base
+// Description : Base Language Transition File
+// Author: Dora Lee <lee@sanghun.io>
+
+"OK" = "OK";
+"NotionAppNotInstalledErrorTitle" = "Notion App not installed.";
+"NotionAppNotInstalledErrorDescription" = "No Notion app installed. Notion Account Switcher requires a notion app.";

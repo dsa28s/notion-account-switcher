@@ -1,0 +1,36 @@
+
+/* Class = "NSMenuItem"; title = "Notion Account Switcher"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "Notion Account Switcher";
+
+/* Class = "NSMenuItem"; title = "Quit Notion Account Switcher"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "Quit Notion Account Switcher";
+
+/* Class = "NSMenuItem"; title = "Edit"; ObjectID = "5QF-Oa-p0T"; */
+"5QF-Oa-p0T.title" = "Edit";
+
+/* Class = "NSMenuItem"; title = "About Notion Account Switcher"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "About Notion Account Switcher";
+
+/* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
+"AYu-sK-qS6.title" = "Main Menu";
+
+/* Class = "NSMenuItem"; title = "View"; ObjectID = "H8h-7b-M4v"; */
+"H8h-7b-M4v.title" = "View";
+
+/* Class = "NSWindow"; title = "Notion Account Switcher"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "Notion Account Switcher";
+
+/* Class = "NSMenuItem"; title = "Window"; ObjectID = "aUF-d1-5bR"; */
+"aUF-d1-5bR.title" = "Window";
+
+/* Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ"; */
+"dMs-cI-mzQ.title" = "File";
+
+/* Class = "NSMenuItem"; title = "Format"; ObjectID = "jxT-CU-nIS"; */
+"jxT-CU-nIS.title" = "Format";
+
+/* Class = "NSMenu"; title = "Notion Account Switcher"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "Notion Account Switcher";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
+"wpr-3q-Mcd.title" = "Help";

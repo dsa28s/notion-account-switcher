@@ -8,9 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		BA2645B524C89923008FAF93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2645B424C89923008FAF93 /* AppDelegate.swift */; };
-		BA2645B724C89923008FAF93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2645B624C89923008FAF93 /* ViewController.swift */; };
+		BA2645B724C89923008FAF93 /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2645B624C89923008FAF93 /* LoadingController.swift */; };
 		BA2645B924C89923008FAF93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA2645B824C89923008FAF93 /* Assets.xcassets */; };
 		BA2645BC24C89923008FAF93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2645BA24C89923008FAF93 /* Main.storyboard */; };
+		BA2F03CE24C9E24C005153E4 /* NASWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F03CD24C9E24C005153E4 /* NASWindowController.swift */; };
+		BA2F03D124C9E77B005153E4 /* PackageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F03D024C9E77B005153E4 /* PackageManager.swift */; };
+		BA2F03D624C9EC6D005153E4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA2F03D424C9EC6D005153E4 /* Localizable.strings */; };
 		E8E3F71E814CA79A670690CE /* Pods_notion_account_switcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BFC7400965C414B6895C2AB /* Pods_notion_account_switcher.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,11 +23,16 @@
 		67F4CE9D30DB3089EC7CDED1 /* Pods-notion-account-switcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-notion-account-switcher.release.xcconfig"; path = "Target Support Files/Pods-notion-account-switcher/Pods-notion-account-switcher.release.xcconfig"; sourceTree = "<group>"; };
 		BA2645B124C89923008FAF93 /* notion-account-switcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "notion-account-switcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2645B424C89923008FAF93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BA2645B624C89923008FAF93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA2645B624C89923008FAF93 /* LoadingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingController.swift; sourceTree = "<group>"; };
 		BA2645B824C89923008FAF93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA2645BB24C89923008FAF93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA2645BD24C89923008FAF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA2645BE24C89923008FAF93 /* notion_account_switcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = notion_account_switcher.entitlements; sourceTree = "<group>"; };
+		BA2F03CD24C9E24C005153E4 /* NASWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASWindowController.swift; sourceTree = "<group>"; };
+		BA2F03D024C9E77B005153E4 /* PackageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageManager.swift; sourceTree = "<group>"; };
+		BA2F03D324C9EC4B005153E4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		BA2F03D524C9EC6D005153E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BA2F03D824C9EC7E005153E4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +53,6 @@
 				45B6BD2DBBEE3834F56C22BC /* Pods-notion-account-switcher.debug.xcconfig */,
 				67F4CE9D30DB3089EC7CDED1 /* Pods-notion-account-switcher.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -78,14 +85,33 @@
 		BA2645B324C89923008FAF93 /* notion-account-switcher */ = {
 			isa = PBXGroup;
 			children = (
+				BA2F03CF24C9E724005153E4 /* Utility */,
+				BA2F03CC24C9E228005153E4 /* View Controllers */,
 				BA2645B424C89923008FAF93 /* AppDelegate.swift */,
-				BA2645B624C89923008FAF93 /* ViewController.swift */,
 				BA2645B824C89923008FAF93 /* Assets.xcassets */,
 				BA2645BA24C89923008FAF93 /* Main.storyboard */,
 				BA2645BD24C89923008FAF93 /* Info.plist */,
 				BA2645BE24C89923008FAF93 /* notion_account_switcher.entitlements */,
+				BA2F03D424C9EC6D005153E4 /* Localizable.strings */,
 			);
 			path = "notion-account-switcher";
+			sourceTree = "<group>";
+		};
+		BA2F03CC24C9E228005153E4 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BA2645B624C89923008FAF93 /* LoadingController.swift */,
+				BA2F03CD24C9E24C005153E4 /* NASWindowController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		BA2F03CF24C9E724005153E4 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				BA2F03D024C9E77B005153E4 /* PackageManager.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +157,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = BA2645A824C89923008FAF93;
 			productRefGroup = BA2645B224C89923008FAF93 /* Products */;
@@ -148,6 +175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA2645B924C89923008FAF93 /* Assets.xcassets in Resources */,
+				BA2F03D624C9EC6D005153E4 /* Localizable.strings in Resources */,
 				BA2645BC24C89923008FAF93 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,7 +212,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA2645B724C89923008FAF93 /* ViewController.swift in Sources */,
+				BA2645B724C89923008FAF93 /* LoadingController.swift in Sources */,
+				BA2F03CE24C9E24C005153E4 /* NASWindowController.swift in Sources */,
+				BA2F03D124C9E77B005153E4 /* PackageManager.swift in Sources */,
 				BA2645B524C89923008FAF93 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,8 +226,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				BA2645BB24C89923008FAF93 /* Base */,
+				BA2F03D324C9EC4B005153E4 /* ko */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BA2F03D424C9EC6D005153E4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA2F03D524C9EC6D005153E4 /* Base */,
+				BA2F03D824C9EC7E005153E4 /* ko */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -207,6 +247,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -267,6 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -331,6 +373,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = io.sanghun.notion.account.switcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -352,6 +395,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = io.sanghun.notion.account.switcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

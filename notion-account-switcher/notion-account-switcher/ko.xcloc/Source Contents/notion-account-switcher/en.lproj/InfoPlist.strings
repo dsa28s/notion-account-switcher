@@ -1,0 +1,4 @@
+/* Bundle name */
+"CFBundleName" = "notion-account-switcher";
+/* Copyright (human-readable) */
+"NSHumanReadableCopyright" = "Copyright © 2020 Dora Lee. All rights reserved.";
