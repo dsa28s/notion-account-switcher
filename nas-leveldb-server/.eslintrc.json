@@ -1,8 +1,19 @@
 {
-  "extends": ["airbnb"],
-  "plugins": ["@typescript-eslint"],
+  "root": true,
   "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
+  ],
   "rules": {
-    "import/no-unresolved": 0
+    "quotes": ["error", "single"],
+    "semi": "error",
+    "eol-last": ["error", "always"],
+    "indent": ["error", 2],
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }
