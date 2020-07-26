@@ -1,0 +1,14 @@
+{
+  "name": "nas-leveldb-server",
+  "version": "0.1",
+  "description": "LevelDB Server for Notion Account Switcher",
+  "main": "dist/index.js",
+  "repository": "https://github.com/dsa28s/notion-account-switcher",
+  "author": "Dora Lee <lee@sanghun.io>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
