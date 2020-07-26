@@ -3,9 +3,10 @@ import 'reflect-metadata';
 import { createExpressServer } from 'routing-controllers';
 import {SERVER_PORT} from './constant';
 import Log from './utils/log';
+import CheckController from './controller/check-controller';
 
 const app = createExpressServer({
-  controllers: [],
+  controllers: [CheckController],
   defaults: {
     nullResultCode: 404,
   }
