@@ -8,6 +8,9 @@
   "license": "MIT",
   "private": false,
   "devDependencies": {
+    "@types/encoding-down": "^5.0.0",
+    "@types/leveldown": "^4.0.2",
+    "@types/levelup": "^4.3.0",
     "@types/node": "^14.0.26",
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
@@ -27,6 +30,7 @@
     "express": "^4.17.1",
     "leveldown": "^5.6.0",
     "levelup": "^4.4.0",
-    "routing-controllers": "0.8.1"
+    "routing-controllers": "0.8.1",
+    "to-uuid": "^0.1.3"
   }
 }

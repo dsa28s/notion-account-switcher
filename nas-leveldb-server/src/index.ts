@@ -4,9 +4,10 @@ import { createExpressServer } from 'routing-controllers';
 import {SERVER_PORT} from './constant';
 import Log from './utils/log';
 import CheckController from './controller/check-controller';
+import DataController from './controller/data-controller';
 
 const app = createExpressServer({
-  controllers: [CheckController],
+  controllers: [CheckController, DataController],
   defaults: {
     nullResultCode: 404,
   }
