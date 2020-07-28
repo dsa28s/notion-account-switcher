@@ -1,6 +1,6 @@
 {
   "name": "nas-leveldb-server",
-  "version": "0.1",
+  "version": "0.7.0",
   "description": "LevelDB Server for Notion Account Switcher",
   "main": "dist/index.js",
   "repository": "https://github.com/dsa28s/notion-account-switcher",
@@ -22,7 +22,8 @@
     "typescript": "^3.9.7"
   },
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "build": "tsc"
   },
   "dependencies": {
     "@ekino/logger": "^1.0.0",

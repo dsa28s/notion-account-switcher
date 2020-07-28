@@ -41,12 +41,15 @@ class Repository {
       encode(leveldown(this.getNotionDataPath())));
 
     return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (!db.isClosed()) {
+          db.close();
+        }
+      }, 2000);
       db.createReadStream({keys: true, values: true})
         .on('data', function (data) {
           try {
             const key = data.key.replace(re, '');
-
-            // console.log(key);
 
             if (key == '_notion://www.notion.soajs_group_properties') {
               const value = JSON.parse(data.value.replace(re, ''));
