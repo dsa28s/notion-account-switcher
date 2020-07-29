@@ -21,7 +21,7 @@ class LoadingController: NSViewController {
     }
 
     private func checkNotionAppInstalled() {
-        if PackageManager.isInstalledNotionApplication() {
+        if !PackageManager.isInstalledNotionApplication() {
             let noInstalledErrorSheet = NSAlert()
             
             noInstalledErrorSheet.messageText = NSLocalizedString("NotionAppNotInstalledErrorTitle", comment: "")
@@ -33,6 +33,12 @@ class LoadingController: NSViewController {
                 NSApp.terminate(nil)
             }
         }
+        
+        self.startLDBServer()
+    }
+    
+    private func startLDBServer() {
+        try? LDBServer.shared.startServer()
     }
 }
 
