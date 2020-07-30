@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: da4767d9326f3f990b5a11b7a62f7d1608499fad
+PODS:
+  - PermissionsKit-macOS (1.0.1)
+
+DEPENDENCIES:
+  - PermissionsKit-macOS
+
+SPEC REPOS:
+  trunk:
+    - PermissionsKit-macOS
+
+SPEC CHECKSUMS:
+  PermissionsKit-macOS: ae9f01fc3387e0b34bb25508802a287ffa4110f1
+
+PODFILE CHECKSUM: c7e34a97edb5e1eb838e67f3822b591394651367
 
 COCOAPODS: 1.9.3

@@ -179,6 +179,7 @@
 				BA2645AE24C89923008FAF93 /* Frameworks */,
 				BA2645AF24C89923008FAF93 /* Resources */,
 				BAB219C324D1D16E00174358 /* Embed PlugIns */,
+				0A90F90D92708A1E85F8A6F6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -269,6 +270,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0A90F90D92708A1E85F8A6F6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-notion-account-switcher/Pods-notion-account-switcher-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-notion-account-switcher/Pods-notion-account-switcher-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-notion-account-switcher/Pods-notion-account-switcher-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FA7BAEF69F35DCB4B8F736D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
