@@ -1,9 +1,33 @@
+// Copyright (c) 2020 Dora Lee
 //
-//  PermissionRequestView.swift
-//  notion-account-switcher
-//
-//  Created by 도라도라 on 2020/07/31.
-//  Copyright © 2020 Dora Lee. All rights reserved.
-//
+// Project : Notion Account Switcher for macOS
+// File Name : View/PermissionRequestView.swift
+// Description : Permission Request View
+// Author: Dora Lee <lee@sanghun.io>
 
 import Foundation
+import Cocoa
+
+class PermissionRequestView: NSView, LoadableView {
+    var mainView: NSView?
+    
+    @IBOutlet weak var titleLabel: NSTextField?
+    @IBOutlet weak var descriptionLabel: NSTextField?
+    @IBOutlet weak var accessButton: NSButton?
+    
+    init() {
+        super.init(frame: NSRect.zero)
+        
+        if load(fromNibNamed: "PermissionRequestView") {
+            
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+}

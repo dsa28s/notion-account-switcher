@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		BA2F03CE24C9E24C005153E4 /* NASWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F03CD24C9E24C005153E4 /* NASWindowController.swift */; };
 		BA2F03D124C9E77B005153E4 /* PackageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F03D024C9E77B005153E4 /* PackageManager.swift */; };
 		BA2F03D624C9EC6D005153E4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA2F03D424C9EC6D005153E4 /* Localizable.strings */; };
+		BA4CB3F424D32175002D4E13 /* PermissionRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA4CB3F324D32175002D4E13 /* PermissionRequestView.xib */; };
+		BA4CB3F624D32196002D4E13 /* PermissionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4CB3F524D32196002D4E13 /* PermissionRequestView.swift */; };
+		BA4CB3F824D3286A002D4E13 /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4CB3F724D3286A002D4E13 /* Nib.swift */; };
 		BAB219BE24D1D12D00174358 /* NotionAccountSwitcherLDBServer in Resources */ = {isa = PBXBuildFile; fileRef = BAB219BC24D1D12D00174358 /* NotionAccountSwitcherLDBServer */; };
 		BAB219BF24D1D12D00174358 /* prebuilds in Resources */ = {isa = PBXBuildFile; fileRef = BAB219BD24D1D12D00174358 /* prebuilds */; };
 		BAB219C024D1D16E00174358 /* NotionAccountSwitcherLDBServer.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = BAB219B624D1D0DE00174358 /* NotionAccountSwitcherLDBServer.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -61,6 +64,9 @@
 		BA2F03D324C9EC4B005153E4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		BA2F03D524C9EC6D005153E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BA2F03D824C9EC7E005153E4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BA4CB3F324D32175002D4E13 /* PermissionRequestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PermissionRequestView.xib; sourceTree = "<group>"; };
+		BA4CB3F524D32196002D4E13 /* PermissionRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionRequestView.swift; sourceTree = "<group>"; };
+		BA4CB3F724D3286A002D4E13 /* Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		BAB219B624D1D0DE00174358 /* NotionAccountSwitcherLDBServer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotionAccountSwitcherLDBServer.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB219B824D1D0DE00174358 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAB219BC24D1D12D00174358 /* NotionAccountSwitcherLDBServer */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = NotionAccountSwitcherLDBServer; path = ../../../LDBServer/NotionAccountSwitcherLDBServer; sourceTree = "<group>"; };
@@ -127,6 +133,7 @@
 		BA2645B324C89923008FAF93 /* notion-account-switcher */ = {
 			isa = PBXGroup;
 			children = (
+				BA4CB3F224D3215C002D4E13 /* View */,
 				BA2F03CF24C9E724005153E4 /* Utility */,
 				BA2F03CC24C9E228005153E4 /* View Controllers */,
 				BA2645B424C89923008FAF93 /* AppDelegate.swift */,
@@ -155,6 +162,16 @@
 				BAB219C924D1D50E00174358 /* LDBServer.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		BA4CB3F224D3215C002D4E13 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BA4CB3F324D32175002D4E13 /* PermissionRequestView.xib */,
+				BA4CB3F524D32196002D4E13 /* PermissionRequestView.swift */,
+				BA4CB3F724D3286A002D4E13 /* Nib.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		BAB219B724D1D0DE00174358 /* NotionAccountSwitcherLDBServer */ = {
@@ -255,6 +272,7 @@
 				BA2645B924C89923008FAF93 /* Assets.xcassets in Resources */,
 				BA2F03D624C9EC6D005153E4 /* Localizable.strings in Resources */,
 				BA2645BC24C89923008FAF93 /* Main.storyboard in Resources */,
+				BA4CB3F424D32175002D4E13 /* PermissionRequestView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +336,9 @@
 			files = (
 				BA2645B724C89923008FAF93 /* LoadingController.swift in Sources */,
 				BA2F03CE24C9E24C005153E4 /* NASWindowController.swift in Sources */,
+				BA4CB3F824D3286A002D4E13 /* Nib.swift in Sources */,
 				BAB219CA24D1D50E00174358 /* LDBServer.swift in Sources */,
+				BA4CB3F624D32196002D4E13 /* PermissionRequestView.swift in Sources */,
 				BA2F03D124C9E77B005153E4 /* PackageManager.swift in Sources */,
 				BA2645B524C89923008FAF93 /* AppDelegate.swift in Sources */,
 			);
@@ -493,7 +513,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = io.sanghun.notion.account.switcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -515,7 +535,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = io.sanghun.notion.account.switcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -38,7 +38,10 @@ class LoadingController: NSViewController {
     }
     
     private func startLDBServer() {
-        try? LDBServer.shared.startServer()
+        // try? LDBServer.shared.startServer()
+        
+        let testView = PermissionRequestView()
+        testView.add(toView: self.view)
     }
 }
 

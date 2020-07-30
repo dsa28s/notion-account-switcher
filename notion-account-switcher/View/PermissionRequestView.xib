@@ -1,15 +1,77 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+        <customView id="c22-O7-iKe" customClass="PermissionRequestView" customModule="notion_account_switcher" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="495" height="288"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cju-z1-gNt">
+                    <rect key="frame" x="200" y="193" width="96" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="96" id="4B4-ut-uaJ"/>
+                        <constraint firstAttribute="height" constant="72" id="dz2-XL-fR7"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Disk" id="VpO-pe-hew"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="62q-no-l1N">
+                    <rect key="frame" x="6" y="129" width="484" height="35"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="{DiskUtilPermissionTitle}" id="3qk-l8-IYc">
+                        <font key="font" metaFont="systemUltraLight" size="30"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jHg-Gz-mqo">
+                    <rect key="frame" x="6" y="85" width="484" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="tm2-E5-s6C"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="{DiskUtilPermissionDescription}" id="TZw-0s-SUe">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="60L-Ws-Kfp">
+                    <rect key="frame" x="201" y="13" width="95" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="83" id="qQn-H1-QBM"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="{Allow}" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Bjb-kJ-2Tf">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="jHg-Gz-mqo" firstAttribute="top" secondItem="62q-no-l1N" secondAttribute="bottom" constant="8" id="46U-Bb-gbg"/>
+                <constraint firstItem="62q-no-l1N" firstAttribute="top" secondItem="Cju-z1-gNt" secondAttribute="bottom" constant="29" id="7hU-aO-pQf"/>
+                <constraint firstItem="60L-Ws-Kfp" firstAttribute="centerX" secondItem="jHg-Gz-mqo" secondAttribute="centerX" id="Bmg-2r-gwZ"/>
+                <constraint firstItem="jHg-Gz-mqo" firstAttribute="trailing" secondItem="62q-no-l1N" secondAttribute="trailing" id="F0R-e2-ZDE"/>
+                <constraint firstItem="62q-no-l1N" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="Skn-CR-WqU"/>
+                <constraint firstItem="jHg-Gz-mqo" firstAttribute="leading" secondItem="62q-no-l1N" secondAttribute="leading" id="akP-fc-7A0"/>
+                <constraint firstItem="Cju-z1-gNt" firstAttribute="centerX" secondItem="62q-no-l1N" secondAttribute="centerX" id="iko-zZ-I8f"/>
+                <constraint firstItem="Cju-z1-gNt" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="23" id="qA8-od-T7c"/>
+                <constraint firstAttribute="bottom" secondItem="60L-Ws-Kfp" secondAttribute="bottom" constant="20" id="wfU-Tu-NJf"/>
+                <constraint firstAttribute="trailing" secondItem="62q-no-l1N" secondAttribute="trailing" constant="7" id="yZs-B2-FQv"/>
+            </constraints>
+            <connections>
+                <outlet property="accessButton" destination="60L-Ws-Kfp" id="znZ-sj-43g"/>
+                <outlet property="descriptionLabel" destination="jHg-Gz-mqo" id="x00-Hp-Mhh"/>
+                <outlet property="titleLabel" destination="62q-no-l1N" id="foF-Ny-0Dz"/>
+            </connections>
+            <point key="canvasLocation" x="137.5" y="149"/>
         </customView>
     </objects>
+    <resources>
+        <image name="Disk" width="384" height="384"/>
+    </resources>
 </document>
