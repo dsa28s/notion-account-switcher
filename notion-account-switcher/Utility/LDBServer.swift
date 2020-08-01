@@ -9,6 +9,7 @@ import Foundation
 
 open class LDBServer {
     public static let shared = LDBServer()
+    public static let serverEntrypoint = "http://localhost:7555"
     private init() { }
     
     private var serverProcess: Process? = nil
@@ -19,17 +20,21 @@ open class LDBServer {
         }
     }
     
-    private var isRunning: Bool {
+    var isRunning: Bool {
         get {
             return serverProcess != nil && serverProcess!.isRunning
         }
     }
     
-    public func startServer() {
+    public func startServer(completionHandler: @escaping () -> Void) {
         self.stopServer() {
             self.serverProcess = Process()
             self.serverProcess?.launchPath = self.serverBinaryPath
             self.serverProcess?.launch()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                completionHandler()
+            }
         }
     }
     

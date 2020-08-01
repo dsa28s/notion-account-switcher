@@ -6,9 +6,15 @@
 // Author: Dora Lee <lee@sanghun.io>
 
 "OK" = "OK";
+"Allow" = "Allow";
 "NotionAppNotInstalledErrorTitle" = "Notion App not installed.";
 "NotionAppNotInstalledErrorDescription" = "No Notion app installed. Notion Account Switcher requires a notion app.";
 
 "DiskUtilPermissionTitle" = "Allow Full Disk Access Permission";
 "DiskUtilPermissionDescription" = "App requires a Notion app data file.\nmacOS Full Disk Access permission is required to access data file.";
-"Allow" = "Allow";
+
+"ServerNotRunningTitle" = "Some components not loaded.";
+"ServerNotRunningDescription" = "If the problem persists after re-running the app, please submit the problem with Github issue.";
+
+"PleaseNotionLoginTitle" = "Login from Notion App";
+"PleaseNotionLoginDescription" = "Please login to Notion app and exit the Notion app.";

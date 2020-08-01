@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="LoginNotionLoadingView" customModule="notion_account_switcher" customModuleProvider="target">
+            <connections>
+                <outlet property="descriptionLabel" destination="O6h-HT-vXy" id="BJs-Ty-J3d"/>
+                <outlet property="loadingIndicator" destination="FiK-DQ-LHD" id="f6H-sB-k4L"/>
+                <outlet property="titleLabel" destination="zrh-Dk-IQx" id="bQ0-yo-3HC"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="538" height="360"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ch9-qD-EdQ">
+                    <rect key="frame" x="221" y="268" width="96" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="96" id="UGd-od-o0e"/>
+                        <constraint firstAttribute="height" constant="72" id="b4E-Ql-hOb"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Key" id="mVf-uc-gh6"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zrh-Dk-IQx">
+                    <rect key="frame" x="18" y="204" width="502" height="35"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="{LoginToNotionTitle}" id="o4t-h1-Gi5">
+                        <font key="font" metaFont="systemUltraLight" size="30"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O6h-HT-vXy">
+                    <rect key="frame" x="18" y="160" width="502" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="wCF-Tu-skI"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="{LoginToNotionDescription}" id="v0N-Ow-BJe">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="FiK-DQ-LHD">
+                    <rect key="frame" x="261" y="20" width="16" height="16"/>
+                </progressIndicator>
+            </subviews>
+            <constraints>
+                <constraint firstItem="O6h-HT-vXy" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="9TM-xU-pHv"/>
+                <constraint firstItem="zrh-Dk-IQx" firstAttribute="top" secondItem="Ch9-qD-EdQ" secondAttribute="bottom" constant="29" id="D4g-7U-WkV"/>
+                <constraint firstItem="Ch9-qD-EdQ" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" id="DBw-Iv-Zas"/>
+                <constraint firstItem="Ch9-qD-EdQ" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="cZa-ta-fJN"/>
+                <constraint firstItem="zrh-Dk-IQx" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="dYz-1z-TLd"/>
+                <constraint firstItem="O6h-HT-vXy" firstAttribute="top" secondItem="zrh-Dk-IQx" secondAttribute="bottom" constant="8" id="mxd-5f-wnY"/>
+                <constraint firstItem="FiK-DQ-LHD" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="nO4-O5-A3y"/>
+                <constraint firstAttribute="trailing" secondItem="zrh-Dk-IQx" secondAttribute="trailing" constant="20" id="tf0-Kd-i6a"/>
+                <constraint firstAttribute="trailing" secondItem="O6h-HT-vXy" secondAttribute="trailing" constant="20" id="uzb-N9-TGQ"/>
+                <constraint firstAttribute="bottom" secondItem="FiK-DQ-LHD" secondAttribute="bottom" constant="20" id="ywT-x2-qjB"/>
+            </constraints>
+            <point key="canvasLocation" x="160" y="190"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="Key" width="384" height="384"/>
+    </resources>
+</document>

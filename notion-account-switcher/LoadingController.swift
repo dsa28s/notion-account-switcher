@@ -6,6 +6,7 @@
 // Author: Dora Lee <lee@sanghun.io>
 
 
+import Foundation
 import Cocoa
 import PermissionsKit
 
@@ -23,44 +24,83 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
 
     private func checkNotionAppInstalled() {
         if !PackageManager.isInstalledNotionApplication() {
-            let noInstalledErrorSheet = NSAlert()
-            
-            noInstalledErrorSheet.messageText = NSLocalizedString("NotionAppNotInstalledErrorTitle", comment: "")
-            noInstalledErrorSheet.informativeText = NSLocalizedString("NotionAppNotInstalledErrorDescription", comment: "")
-            noInstalledErrorSheet.alertStyle = .critical
-            noInstalledErrorSheet.addButton(withTitle: NSLocalizedString("OK", comment: ""))
-            
-            noInstalledErrorSheet.beginSheetModal(for: self.view.window!) { (response) in
+            showAlertSheet(alertStyle: .critical,
+                           titleLocalizationKey: "NotionAppNotInstalledErrorTitle",
+                           descriptionLocalizationKey: "NotionAppNotInstalledErrorDescription",
+                           buttonLocalizationKeys: ["OK"]) { response in
                 NSApp.terminate(nil)
             }
         }
         
-        self.startLDBServer()
-        self.checkFullDiskAccessAndRequestPermission()
+        self.startLDBServer {
+            self.checkFullDiskAccessAndRequestPermission()
+        }
     }
     
-    private func startLDBServer() {
-        LDBServer.shared.startServer()
+    private func startLDBServer(completionHandler: @escaping () -> (Void)) {
+        LDBServer.shared.startServer(completionHandler: completionHandler)
     }
     
     private func checkFullDiskAccessAndRequestPermission() {
         let permissionStatus = PermissionsKit.authorizationStatus(for: .fullDiskAccess)
         
-        if permissionStatus != .authorized {
-            self.progressIndicator.stopAnimation(nil)
+        #if DEBUG
+            self.checkNotionDataExist()
+        #else
+            if permissionStatus != .authorized {
+                self.progressIndicator.stopAnimation(nil)
+                
+                let permissionRequestView = PermissionRequestView()
+                permissionRequestView.add(toView: self.view)
+                permissionRequestView.delegate = self
+            } else {
+                self.checkNotionDataExist()
+            }
+        #endif
+    }
+    
+    private func checkNotionDataExist() {
+        if !LDBServer.shared.isRunning {
+            showAlertSheet(alertStyle: .critical,
+                           titleLocalizationKey: "ServerNotRunningTitle",
+                           descriptionLocalizationKey: "ServerNotRunningDescription",
+                           buttonLocalizationKeys: ["OK"]) { response in
+                NSApp.terminate(nil)
+            }
+        } else {
+            let request = NSMutableURLRequest(url: URL(string: "\(LDBServer.serverEntrypoint)/data/email")!)
+            request.httpMethod = "GET"
             
-            let permissionRequestView = PermissionRequestView()
-            permissionRequestView.add(toView: self.view)
-            permissionRequestView.delegate = self
+            let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+                if let httpResponse = response as? HTTPURLResponse {
+                    DispatchQueue.main.async {
+                        // Notion data not found (not logged in)
+                        if httpResponse.statusCode == 403 {
+                            self.showNotionLoginInformation()
+                        } else {
+                            
+                        }
+                    }
+                }
+            }
+            
+            task.resume()
         }
+    }
+    
+    private func showNotionLoginInformation() {
+        self.progressIndicator.stopAnimation(nil)
+        
+        let notionLoginInformationView = LoginNotionLoadingView()
+        notionLoginInformationView.add(toView: self.view)
     }
     
     func onPermissionRequest() {
         PermissionsKit.requestAuthorization(for: .fullDiskAccess) { status in
             if status == .authorized {
-                print("OK")
+                print("Full Disk Access Permission granted.")
             }
         }
-    }notion-account-switcher/LoadingController.swift 
+    }
 }
 
