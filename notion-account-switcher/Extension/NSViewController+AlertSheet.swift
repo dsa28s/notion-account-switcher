@@ -1,10 +1,9 @@
+// Copyright (c) 2020 Dora Lee
 //
-//  NSViewController+AlertSheet.swift
-//  notion-account-switcher
-//
-//  Created by 도라도라 on 2020/08/02.
-//  Copyright © 2020 Dora Lee. All rights reserved.
-//
+// Project : Notion Account Switcher for macOS
+// File Name : Extension/NSViewController+AlertSheet.swift
+// Description : Alert Sheet Extension for NSViewController
+// Author: Dora Lee <lee@sanghun.io>
 
 import Foundation
 import Cocoa
