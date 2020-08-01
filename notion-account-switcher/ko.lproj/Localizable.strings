@@ -8,3 +8,7 @@
 "OK" = "확인";
 "NotionAppNotInstalledErrorTitle" = "Notion 앱이 설치되어 있지 않습니다.";
 "NotionAppNotInstalledErrorTitle" = "Notion 을 설치 후, 다시 실행해주세요.";
+
+"DiskUtilPermissionTitle" = "전체 디스크 접근 권한 허용";
+"DiskUtilPermissionDescription" = "노션 데이터 파일에 접근해야 합니다. macOS 정책에 따라,\n다른 앱 데이터를 접근하기 위해서는 '전체 디스크 접근' 권한을 허용해야 합니다.";
+"Allow" = "허용";

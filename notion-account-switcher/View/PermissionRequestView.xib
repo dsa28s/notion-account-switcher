@@ -6,10 +6,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="PermissionRequestView" customModule="notion_account_switcher" customModuleProvider="target">
+            <connections>
+                <outlet property="accessButton" destination="60L-Ws-Kfp" id="dgt-dK-sPf"/>
+                <outlet property="descriptionLabel" destination="jHg-Gz-mqo" id="0UI-yP-bJH"/>
+                <outlet property="titleLabel" destination="62q-no-l1N" id="yk5-4e-au9"/>
+            </connections>
+        </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe" customClass="PermissionRequestView" customModule="notion_account_switcher" customModuleProvider="target">
+        <customView id="c22-O7-iKe">
             <rect key="frame" x="0.0" y="0.0" width="495" height="288"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -49,6 +55,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="allowButtonAction:" target="-2" id="TU6-kb-mB9"/>
+                    </connections>
                 </button>
             </subviews>
             <constraints>

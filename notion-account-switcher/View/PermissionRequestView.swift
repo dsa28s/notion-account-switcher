@@ -8,26 +8,43 @@
 import Foundation
 import Cocoa
 
+protocol PermissionRequestDelegate {
+    func onPermissionRequest()
+}
+
 class PermissionRequestView: NSView, LoadableView {
     var mainView: NSView?
     
-    @IBOutlet weak var titleLabel: NSTextField?
-    @IBOutlet weak var descriptionLabel: NSTextField?
-    @IBOutlet weak var accessButton: NSButton?
+    @IBOutlet weak var titleLabel: NSTextField!
+    @IBOutlet weak var descriptionLabel: NSTextField!
+    @IBOutlet weak var accessButton: NSButton!
     
-    init() {
-        super.init(frame: NSRect.zero)
-        
-        if load(fromNibNamed: "PermissionRequestView") {
-            
-        }
-    }
+    var delegate: PermissionRequestDelegate?
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    init() {
+        super.init(frame: NSRect.zero)
+        
+        if load(fromNibNamed: "PermissionRequestView") {
+            initializeView()
+        }
+    }
+    
+    @IBAction func allowButtonAction(_ sender: Any) {
+        delegate?.onPermissionRequest()
+    }
+    
+    fileprivate func initializeView() {
+        guard mainView != nil else { return }
+        
+        titleLabel.stringValue = NSLocalizedString("DiskUtilPermissionTitle", comment: "")
+        descriptionLabel.stringValue = NSLocalizedString("DiskUtilPermissionDescription", comment: "")
+        
+        let pstyle = NSMutableParagraphStyle()
+        pstyle.alignment = .center
+        accessButton.attributedTitle = NSAttributedString(string: NSLocalizedString("Allow", comment: ""), attributes: [ NSAttributedString.Key.foregroundColor : NSColor.white, NSAttributedString.Key.paragraphStyle : pstyle ])
     }
 }

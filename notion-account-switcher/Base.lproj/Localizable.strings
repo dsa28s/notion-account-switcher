@@ -8,3 +8,7 @@
 "OK" = "OK";
 "NotionAppNotInstalledErrorTitle" = "Notion App not installed.";
 "NotionAppNotInstalledErrorDescription" = "No Notion app installed. Notion Account Switcher requires a notion app.";
+
+"DiskUtilPermissionTitle" = "Allow Full Disk Access Permission";
+"DiskUtilPermissionDescription" = "App requires a Notion app data file.\nmacOS Full Disk Access permission is required to access data file.";
+"Allow" = "Allow";

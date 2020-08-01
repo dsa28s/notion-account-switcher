@@ -9,7 +9,7 @@ import Foundation
 
 open class LDBServer {
     public static let shared = LDBServer()
-    private init() {}
+    private init() { }
     
     private var serverProcess: Process? = nil
     
@@ -25,11 +25,22 @@ open class LDBServer {
         }
     }
     
-    public func startServer() throws {
-        print(self.serverBinaryPath)
-        self.serverProcess = Process()
-        self.serverProcess?.launchPath = self.serverBinaryPath
-        self.serverProcess?.launch()
+    public func startServer() {
+        self.stopServer() {
+            self.serverProcess = Process()
+            self.serverProcess?.launchPath = self.serverBinaryPath
+            self.serverProcess?.launch()
+        }
+    }
+    
+    public func stopServer(completionHandler: @escaping () -> Void) {
+        let killallProcess = Process()
+        killallProcess.launchPath = "/usr/bin/killall"
+        killallProcess.arguments = ["NotionAccountSwitcherLDBServer"]
+        killallProcess.terminationHandler = { process in
+            completionHandler()
+        }
+        killallProcess.launch()
     }
 }
 

@@ -7,8 +7,9 @@
 
 
 import Cocoa
+import PermissionsKit
 
-class LoadingController: NSViewController {
+class LoadingController: NSViewController, PermissionRequestDelegate {
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
 
     override func viewDidAppear() {
@@ -35,13 +36,31 @@ class LoadingController: NSViewController {
         }
         
         self.startLDBServer()
+        self.checkFullDiskAccessAndRequestPermission()
     }
     
     private func startLDBServer() {
-        // try? LDBServer.shared.startServer()
-        
-        let testView = PermissionRequestView()
-        testView.add(toView: self.view)
+        LDBServer.shared.startServer()
     }
+    
+    private func checkFullDiskAccessAndRequestPermission() {
+        let permissionStatus = PermissionsKit.authorizationStatus(for: .fullDiskAccess)
+        
+        if permissionStatus != .authorized {
+            self.progressIndicator.stopAnimation(nil)
+            
+            let permissionRequestView = PermissionRequestView()
+            permissionRequestView.add(toView: self.view)
+            permissionRequestView.delegate = self
+        }
+    }
+    
+    func onPermissionRequest() {
+        PermissionsKit.requestAuthorization(for: .fullDiskAccess) { status in
+            if status == .authorized {
+                print("OK")
+            }
+        }
+    }notion-account-switcher/LoadingController.swift 
 }
 
