@@ -22,3 +22,7 @@
 
 "LoginSuccessNotificationTitle" = "Notion 계정에 로그인 되었습니다.";
 "LoggedIn" = "로그인 됨";
+
+"LoggedInAccount" = "로그인 된 계정";
+"AddAccount" = "계정 추가";
+"RemoveAccount" = "계정 삭제";

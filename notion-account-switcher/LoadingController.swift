@@ -13,6 +13,7 @@ import PermissionsKit
 class LoadingController: NSViewController, PermissionRequestDelegate {
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
     private var checkDataTimer: Timer?
+    private var pushedViewController: NSViewController?
 
     override func viewDidAppear() {
         super.viewDidLoad()
@@ -48,7 +49,7 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
         #if DEBUG
             self.checkNotionDataExist { isLoggedIn, userInfo in
                 if isLoggedIn {
-                    
+                    self.showAccountList()
                 } else {
                     self.showNotionLoginInformation()
                 }
@@ -61,7 +62,13 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
                 permissionRequestView.add(toView: self.view)
                 permissionRequestView.delegate = self
             } else {
-                self.checkNotionDataExist()
+                self.checkNotionDataExist { isLoggedIn, userInfo in
+                    if isLoggedIn {
+                        self.showAccountList()
+                    } else {
+                        self.showNotionLoginInformation()
+                    }
+                }
             }
         #endif
     }
@@ -133,9 +140,17 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
                     self.checkDataTimer?.invalidate()
                     
                     self.postNotificationCenter(titleLocalizationKey: "LoginSuccessNotificationTitle", description: "\(NSLocalizedString("LoggedIn", comment: "")) : \(userInfo!.email)")
-                    PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email)
+                    if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
+                        self.showAccountList()
+                    }
                 }
             }
+        }
+    }
+    
+    func showAccountList() {
+        if let accountListController = storyboard?.instantiateController(withIdentifier: "AccountListController") as? AccountListController {
+            self.present(accountListController, animator: ReplacePresentationAnimator())
         }
     }
     

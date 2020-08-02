@@ -22,3 +22,7 @@
 
 "LoginSuccessNotificationTitle" = "Logged in.";
 "LoggedIn" = "Account";
+
+"LoggedInAccount" = "Accounts";
+"AddAccount" = "Add Account";
+"RemoveAccount" = "Remove Account";
