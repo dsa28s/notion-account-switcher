@@ -8,12 +8,20 @@
 import Foundation
 import Cocoa
 
+protocol AccountListCellDelegate {
+    func removeButtonClicked(isCurrentUser: Bool, notionUserInfo: NotionUserInfo)
+}
+
 class AccountListCell: NSTableCellView, LoadableView {
     var mainView: NSView?
     
     @IBOutlet weak var faviconImage: NSImageView!
     @IBOutlet weak var emailLabel: NSTextField!
     @IBOutlet weak var removeLabel: NSButton!
+    
+    var delegate: AccountListCellDelegate?
+    
+    private var isCurrentUser = false
     
     private var notionUserInfo: NotionUserInfo?
     
@@ -48,10 +56,16 @@ class AccountListCell: NSTableCellView, LoadableView {
     }
     
     func setCurrentUserIsSameUser(_ isSameUser: Bool) {
+        self.isCurrentUser = isSameUser
+        
         if isSameUser {
             self.emailLabel.stringValue = "\(self.notionUserInfo!.email) (\(NSLocalizedString("LoggedIn", comment: "")))"
         } else {
             self.emailLabel.stringValue = self.notionUserInfo!.email
         }
+    }
+    
+    @IBAction func removeAction(_ sender: Any) {
+        delegate?.removeButtonClicked(isCurrentUser: self.isCurrentUser, notionUserInfo: self.notionUserInfo!)
     }
 }

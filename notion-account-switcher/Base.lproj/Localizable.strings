@@ -8,6 +8,7 @@
 "OK" = "OK";
 "Allow" = "Allow";
 "Done" = "Done";
+"Cancel" = "Cancel";
 "NotionAppNotInstalledErrorTitle" = "Notion App not installed.";
 "NotionAppNotInstalledErrorDescription" = "No Notion app installed. Notion Account Switcher requires a notion app.";
 
@@ -27,3 +28,7 @@
 "LoggedInAccount" = "Accounts";
 "AddAccount" = "Add Account";
 "RemoveAccount" = "Remove Account";
+
+"RemoveAccountTitle" = "Remove account from Account Switcher?";
+"RemoveAccountCurrentUserDescription" = "You are currently logged in with this account.\nIf you delete the account information (not notion account), also be automatically logged out of the Notion app.";
+"RemoveAccountDescription" = "This action cannot be undone.\n(Note: Note account not be erased. Only remove from account switcher app.)";

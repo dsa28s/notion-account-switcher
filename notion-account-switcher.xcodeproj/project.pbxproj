@@ -18,6 +18,11 @@
 		BA2F03CE24C9E24C005153E4 /* NASWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F03CD24C9E24C005153E4 /* NASWindowController.swift */; };
 		BA2F03D124C9E77B005153E4 /* PackageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F03D024C9E77B005153E4 /* PackageManager.swift */; };
 		BA2F03D624C9EC6D005153E4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA2F03D424C9EC6D005153E4 /* Localizable.strings */; };
+		BA311FD624D6FC6400B348BC /* AccountListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA311FD524D6FC6400B348BC /* AccountListController.swift */; };
+		BA311FD824D7059500B348BC /* ReplacePresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA311FD724D7059500B348BC /* ReplacePresentationAnimator.swift */; };
+		BA311FDA24D70C4200B348BC /* AccountListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA311FD924D70C4200B348BC /* AccountListCell.xib */; };
+		BA311FDC24D710F000B348BC /* AccountListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA311FDB24D710F000B348BC /* AccountListCell.swift */; };
+		BA311FDE24D7270D00B348BC /* NSButton+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA311FDD24D7270D00B348BC /* NSButton+Label.swift */; };
 		BA4CB3F424D32175002D4E13 /* PermissionRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA4CB3F324D32175002D4E13 /* PermissionRequestView.xib */; };
 		BA4CB3F624D32196002D4E13 /* PermissionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4CB3F524D32196002D4E13 /* PermissionRequestView.swift */; };
 		BA4CB3F824D3286A002D4E13 /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4CB3F724D3286A002D4E13 /* Nib.swift */; };
@@ -72,6 +77,11 @@
 		BA2F03D324C9EC4B005153E4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		BA2F03D524C9EC6D005153E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BA2F03D824C9EC7E005153E4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BA311FD524D6FC6400B348BC /* AccountListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListController.swift; sourceTree = "<group>"; };
+		BA311FD724D7059500B348BC /* ReplacePresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacePresentationAnimator.swift; sourceTree = "<group>"; };
+		BA311FD924D70C4200B348BC /* AccountListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountListCell.xib; sourceTree = "<group>"; };
+		BA311FDB24D710F000B348BC /* AccountListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListCell.swift; sourceTree = "<group>"; };
+		BA311FDD24D7270D00B348BC /* NSButton+Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Label.swift"; sourceTree = "<group>"; };
 		BA4CB3F324D32175002D4E13 /* PermissionRequestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PermissionRequestView.xib; sourceTree = "<group>"; };
 		BA4CB3F524D32196002D4E13 /* PermissionRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionRequestView.swift; sourceTree = "<group>"; };
 		BA4CB3F724D3286A002D4E13 /* Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
@@ -160,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				BA286B4324D5BD01003C7B06 /* NSViewController+Alert.swift */,
+				BA311FDD24D7270D00B348BC /* NSButton+Label.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -177,6 +188,7 @@
 			children = (
 				BA2645B624C89923008FAF93 /* LoadingController.swift */,
 				BA2F03CD24C9E24C005153E4 /* NASWindowController.swift */,
+				BA311FD524D6FC6400B348BC /* AccountListController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -197,7 +209,10 @@
 				BA4CB3F524D32196002D4E13 /* PermissionRequestView.swift */,
 				BA286B4724D5C839003C7B06 /* LoginNotionLoadingView.xib */,
 				BA286B4924D5CA4B003C7B06 /* LoginNotionLoadingView.swift */,
+				BA311FD924D70C4200B348BC /* AccountListCell.xib */,
+				BA311FDB24D710F000B348BC /* AccountListCell.swift */,
 				BA4CB3F724D3286A002D4E13 /* Nib.swift */,
+				BA311FD724D7059500B348BC /* ReplacePresentationAnimator.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -300,6 +315,7 @@
 				BA286B4824D5C839003C7B06 /* LoginNotionLoadingView.xib in Resources */,
 				BA2645B924C89923008FAF93 /* Assets.xcassets in Resources */,
 				BA2F03D624C9EC6D005153E4 /* Localizable.strings in Resources */,
+				BA311FDA24D70C4200B348BC /* AccountListCell.xib in Resources */,
 				BA2645BC24C89923008FAF93 /* Main.storyboard in Resources */,
 				BA4CB3F424D32175002D4E13 /* PermissionRequestView.xib in Resources */,
 			);
@@ -363,15 +379,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA311FDC24D710F000B348BC /* AccountListCell.swift in Sources */,
 				BA286B4424D5BD01003C7B06 /* NSViewController+Alert.swift in Sources */,
+				BA311FD824D7059500B348BC /* ReplacePresentationAnimator.swift in Sources */,
 				BA2645B724C89923008FAF93 /* LoadingController.swift in Sources */,
 				BA2F03CE24C9E24C005153E4 /* NASWindowController.swift in Sources */,
 				BA286B4D24D5CE81003C7B06 /* NotionUserInfo.swift in Sources */,
 				BA286B4A24D5CA4B003C7B06 /* LoginNotionLoadingView.swift in Sources */,
+				BA311FDE24D7270D00B348BC /* NSButton+Label.swift in Sources */,
 				BA4CB3F824D3286A002D4E13 /* Nib.swift in Sources */,
 				BAB219CA24D1D50E00174358 /* LDBServer.swift in Sources */,
 				BA4CB3F624D32196002D4E13 /* PermissionRequestView.swift in Sources */,
 				BA2F03D124C9E77B005153E4 /* PackageManager.swift in Sources */,
+				BA311FD624D6FC6400B348BC /* AccountListController.swift in Sources */,
 				BA2645B524C89923008FAF93 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

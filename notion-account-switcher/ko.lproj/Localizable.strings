@@ -8,6 +8,7 @@
 "OK" = "확인";
 "Allow" = "허용";
 "Done" = "완료";
+"Cancel" = "취소";
 "NotionAppNotInstalledErrorTitle" = "Notion 앱이 설치되어 있지 않습니다.";
 "NotionAppNotInstalledErrorTitle" = "Notion 을 설치 후, 다시 실행해주세요.";
 
@@ -27,3 +28,7 @@
 "LoggedInAccount" = "로그인 된 계정";
 "AddAccount" = "계정 추가";
 "RemoveAccount" = "계정 삭제";
+
+"RemoveAccountTitle" = "계정을 삭제할까요?";
+"RemoveAccountCurrentUserDescription" = "현재 이 계정으로 로그인 되어 있습니다.\n해당 계정을 삭제하면, Notion 앱에서도 자동 로그아웃 됩니다. (단, Notion 계정은 지워지지 않습니다.)";
+"RemoveAccountDescription" = "이 동작은 취소할 수 없습니다.\n(단, Notion 계정은 지워지지 않습니다.)";

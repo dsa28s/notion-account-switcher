@@ -8,7 +8,7 @@
 import Foundation
 import Cocoa
 
-class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, AccountListCellDelegate {
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var accountTable: NSTableView!
     @IBOutlet weak var addAccountButton: NSButton!
@@ -45,7 +45,12 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     override func viewDidAppear() {
         super.viewDidAppear()
         
+        load()
+    }
+
+    private func load() {
         notionDatas = PackageManager.getSavedNotionDatas()
+        cachedFavicons = Dictionary()
         notionDatas.forEach { item in
             self.loadFavicons(email: item.email) { image in
                 self.cachedFavicons[item.email] = image
@@ -81,6 +86,8 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         } else {
             accountCell.setCurrentUserIsSameUser(false)
         }
+        
+        accountCell.delegate = self
         
         return accountCell
     }
@@ -149,5 +156,21 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         }
         
         task.resume()
+    }
+    
+    func removeButtonClicked(isCurrentUser: Bool, notionUserInfo: NotionUserInfo) {
+        let descriptionKey = isCurrentUser ? "RemoveAccountCurrentUserDescription" : "RemoveAccountDescription"
+        
+        self.showAlertSheet(alertStyle: .warning, titleLocalizationKey: "RemoveAccountTitle", descriptionLocalizationKey: descriptionKey, buttonLocalizationKeys: ["Cancel", "RemoveAccount"]) { response in
+            
+            if response == .alertSecondButtonReturn {
+                PackageManager.removeUserData(email: notionUserInfo.email, userId: notionUserInfo.userId.replacingOccurrences(of: "-", with: ""))
+                if isCurrentUser {
+                    PackageManager.clearNotionApplicationData()
+                }
+                
+                self.load()
+            }
+        }
     }
 }

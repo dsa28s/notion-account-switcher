@@ -52,8 +52,12 @@ class PackageManager: NSObject {
         return workspace.urlForApplication(withBundleIdentifier: "notion.id") != nil
     }
     
+    private class final func getNotion_NSRunningApplication() -> [NSRunningApplication] {
+        return NSWorkspace.shared.runningApplications.filter({ (value: NSRunningApplication) -> Bool in return (value.bundleIdentifier == "notion.id") } )
+    }
+    
     class final func isRunningNotion() -> Bool {
-        let runningNotionApps = NSWorkspace.shared.runningApplications.filter({ (value: NSRunningApplication) -> Bool in return (value.bundleIdentifier == "notion.id") } )
+        let runningNotionApps = getNotion_NSRunningApplication()
         return runningNotionApps.count > 0
     }
     
@@ -96,5 +100,21 @@ class PackageManager: NSObject {
             { (value: String) ->
                 NotionUserInfo in return NotionUserInfo(email: String(value.split(separator: "_")[0]), userId: String(value.split(separator: "_")[1].replacingOccurrences(of: ".nasud", with: "")))
             })
+    }
+    
+    class final func removeUserData(email: String, userId: String) {
+        let archivePath = "\(notionDataSavePath)/\(email)_\(userId.replacingOccurrences(of: "-", with: ""))"
+        
+        if fileManager.fileExists(atPath: "\(archivePath).nasud") {
+            try? fileManager.removeItem(atPath: "\(archivePath).nasud")
+        }
+    }
+    
+    class final func clearNotionApplicationData() {
+        if let notion = getNotion_NSRunningApplication().first {
+            notion.forceTerminate()
+        }
+        
+        try? fileManager.removeItem(atPath: notionDataPath)
     }
 }
