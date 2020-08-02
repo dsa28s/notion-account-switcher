@@ -7,15 +7,77 @@
 
 import Foundation
 import AppKit
-import SWCompression
+import tarkit
 
 class PackageManager: NSObject {
+    private class var userApplicationSupportDirectoryPath: String {
+        get {
+            let paths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
+            return paths.first!
+        }
+    }
+    private class var notionDataPath: String {
+        get {
+            return "\(userApplicationSupportDirectoryPath)/Notion"
+        }
+    }
+    
+    private class var appDataPath: String {
+        get {
+            return "\(userApplicationSupportDirectoryPath)/Notion Account Switcher"
+        }
+    }
+    
+    private class var notionDataSavePath: String {
+        get {
+            return "\(appDataPath)/Datas"
+        }
+    }
+    
+    private class var nasudMagicHeader: [UInt8] {
+        get {
+            return Array("notion-account-switcher-user-data".utf8)
+        }
+    }
+    
     class final func isInstalledNotionApplication() -> Bool {
         let workspace = NSWorkspace.shared
         return workspace.urlForApplication(withBundleIdentifier: "notion.id") != nil
     }
     
-    class final func archiveNotionAppData(userId: String, email: String, completionHandler: @escaping () -> Void) {
-        let tar = TarEntryInfo(name: "/U", type: .directory)
+    class final func isRunningNotion() -> Bool {
+        let runningNotionApps = NSWorkspace.shared.runningApplications.filter({ (value: NSRunningApplication) -> Bool in return (value.bundleIdentifier == "notion.id") } )
+        return runningNotionApps.count > 0
+    }
+    
+    class final func archiveNotionAppData(userId: String, email: String) -> Bool {
+        let fileManager = FileManager.default
+        try? fileManager.createDirectory(at: URL(fileURLWithPath: notionDataSavePath), withIntermediateDirectories: true, attributes: nil)
+        
+        let archivePath = "\(notionDataSavePath)/\(email)_\(userId.replacingOccurrences(of: "-", with: ""))"
+        
+        do {
+            if fileManager.fileExists(atPath: "\(archivePath).nasud") {
+                try fileManager.removeItem(atPath: "\(archivePath).nasud")
+            }
+            if fileManager.fileExists(atPath: "\(archivePath).tar") {
+                try fileManager.removeItem(atPath: "\(archivePath).tar")
+            }
+            
+            try DCTar.compressFile(atPath: notionDataPath, toPath: "\(archivePath).tar")
+            
+            var fileData = try Data(contentsOf: URL(fileURLWithPath: "\(archivePath).tar"))
+            for (index, element) in nasudMagicHeader.enumerated() {
+                fileData.insert(element, at: index)
+            }
+            
+            try fileData.write(to: URL(fileURLWithPath: "\(archivePath).nasud"))
+            try fileManager.removeItem(atPath: "\(archivePath).tar")
+            
+            return true
+        } catch {
+            print(error)
+            return false
+        }
     }
 }

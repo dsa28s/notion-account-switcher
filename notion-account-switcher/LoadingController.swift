@@ -127,14 +127,13 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
     }
     
     @objc func waitForLoginNotionTask() {
-        let runningNotionApps = NSWorkspace.shared.runningApplications.filter({ (value: NSRunningApplication) -> Bool in return (value.bundleIdentifier == "notion.id") } )
-        
-        if runningNotionApps.count == 0 {
+        if !PackageManager.isRunningNotion() {
             checkNotionDataExist { (isLoggedIn, userInfo) in
                 if isLoggedIn {
                     self.checkDataTimer?.invalidate()
                     
                     self.postNotificationCenter(titleLocalizationKey: "LoginSuccessNotificationTitle", description: "\(NSLocalizedString("LoggedIn", comment: "")) : \(userInfo!.email)")
+                    PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email)
                 }
             }
         }

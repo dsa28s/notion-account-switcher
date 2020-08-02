@@ -18,7 +18,7 @@
 
 "OpeningNotionTitle" = "Notion 앱을 실행하는 중...";
 "PleaseNotionLoginTitle" = "Notion 앱에서 로그인";
-"PleaseNotionLoginDescription" = "Notion 앱에서 로그인 한 후,\nNotion 앱을 종료해주세요.";
+"PleaseNotionLoginDescription" = "Notion 앱에서 로그인 한 후, Notion 앱을 종료해주세요.\n(만약 종료 후에도 화면이 넘어가지 않는다면, 노션 앱을 재실행 -> 종료를 다시 한번 해주세요)";
 
 "LoginSuccessNotificationTitle" = "Notion 계정에 로그인 되었습니다.";
 "LoggedIn" = "로그인 됨";
