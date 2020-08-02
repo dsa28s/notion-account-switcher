@@ -10,12 +10,19 @@ import AppKit
 import tarkit
 
 class PackageManager: NSObject {
+    private class var fileManager: FileManager {
+        get {
+            return FileManager.default
+        }
+    }
+    
     private class var userApplicationSupportDirectoryPath: String {
         get {
             let paths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
             return paths.first!
         }
     }
+    
     private class var notionDataPath: String {
         get {
             return "\(userApplicationSupportDirectoryPath)/Notion"
@@ -51,7 +58,6 @@ class PackageManager: NSObject {
     }
     
     class final func archiveNotionAppData(userId: String, email: String) -> Bool {
-        let fileManager = FileManager.default
         try? fileManager.createDirectory(at: URL(fileURLWithPath: notionDataSavePath), withIntermediateDirectories: true, attributes: nil)
         
         let archivePath = "\(notionDataSavePath)/\(email)_\(userId.replacingOccurrences(of: "-", with: ""))"
@@ -79,5 +85,16 @@ class PackageManager: NSObject {
             print(error)
             return false
         }
+    }
+    
+    class final func getSavedNotionDatas() -> [NotionUserInfo] {
+        guard let nasuds = try? fileManager.contentsOfDirectory(atPath: "\(notionDataSavePath)").filter({ (value: String) -> Bool in return (value.hasSuffix(".nasud")) }) else {
+            return []
+        }
+        
+        return nasuds.map(
+            { (value: String) ->
+                NotionUserInfo in return NotionUserInfo(email: String(value.split(separator: "_")[0]), userId: String(value.split(separator: "_")[1].replacingOccurrences(of: ".nasud", with: "")))
+            })
     }
 }

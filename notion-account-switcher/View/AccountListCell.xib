@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AccountListCell" customModule="notion_account_switcher" customModuleProvider="target">
+            <connections>
+                <outlet property="emailLabel" destination="ICt-KL-9EU" id="iPe-5s-Lia"/>
+                <outlet property="faviconImage" destination="Byk-av-chE" id="sOH-aL-oEq"/>
+                <outlet property="removeLabel" destination="k7e-Bf-GQf" id="XZ2-9S-Wv2"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Byk-av-chE">
+                    <rect key="frame" x="20" y="14" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="2j7-t2-lQC"/>
+                        <constraint firstAttribute="height" constant="32" id="nVc-Ex-StM"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="nJN-wB-Ppt"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ICt-KL-9EU">
+                    <rect key="frame" x="66" y="22" width="351" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="lee@sanghun.io" id="chb-7O-3N1">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="k7e-Bf-GQf">
+                    <rect key="frame" x="445" y="23" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="15" id="eX7-jm-nBl"/>
+                        <constraint firstAttribute="height" constant="15" id="xDz-5Y-wDU"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Remove" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="PRc-A6-XzP">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="k7e-Bf-GQf" secondAttribute="trailing" constant="20" id="DJf-Yw-UGq"/>
+                <constraint firstItem="ICt-KL-9EU" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="DQL-ez-0CQ"/>
+                <constraint firstItem="k7e-Bf-GQf" firstAttribute="leading" secondItem="ICt-KL-9EU" secondAttribute="trailing" constant="30" id="HgS-9P-Pyk"/>
+                <constraint firstItem="Byk-av-chE" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="Mgg-8j-iCH"/>
+                <constraint firstItem="Byk-av-chE" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="N3T-LG-Dj8"/>
+                <constraint firstItem="ICt-KL-9EU" firstAttribute="leading" secondItem="Byk-av-chE" secondAttribute="trailing" constant="16" id="h18-nt-jpO"/>
+                <constraint firstItem="k7e-Bf-GQf" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="zCf-nK-DiM"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="260"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="Remove" width="214" height="214"/>
+    </resources>
+</document>

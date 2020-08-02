@@ -132,7 +132,7 @@
                             </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFZ-aE-Rgb">
                                 <rect key="frame" x="20" y="60" width="439" height="175"/>
-                                <clipView key="contentView" id="Hcx-g2-OwT">
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Hcx-g2-OwT">
                                     <rect key="frame" x="1" y="0.0" width="437" height="174"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -188,11 +188,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="v7p-yJ-nUQ">
-                                                            <rect key="frame" x="120" y="1" width="438" height="17"/>
+                                                            <rect key="frame" x="120" y="1" width="315" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="80Y-I5-VFd">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="438" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="315" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="uwf-Q2-rse">
                                                                         <font key="font" metaFont="system"/>
@@ -210,6 +210,7 @@
                                             </tableColumns>
                                         </tableView>
                                     </subviews>
+                                    <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="t5y-i5-UFd">
                                     <rect key="frame" x="1" y="119" width="223" height="15"/>
@@ -219,7 +220,7 @@
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <tableHeaderView key="headerView" id="v6R-so-l9Y">
+                                <tableHeaderView key="headerView" hidden="YES" focusRingType="none" id="v6R-so-l9Y">
                                     <rect key="frame" x="0.0" y="0.0" width="437" height="25"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>

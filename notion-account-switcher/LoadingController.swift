@@ -82,35 +82,13 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
                 NSApp.terminate(nil)
             }
         } else {
-            let request = NSMutableURLRequest(url: URL(string: "\(LDBServer.serverEntrypoint)/data/email")!)
-            request.httpMethod = "GET"
-            
-            let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
-                if let httpResponse = response as? HTTPURLResponse {
-                    DispatchQueue.main.async {
-                        // Notion data not found (not logged in)
-                        if httpResponse.statusCode == 403 {
-                            resultHandler(false, nil)
-                        } else {
-                            guard let data = data, error == nil else { return }
-
-                            do {
-                                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
-                                let userId = json?["notionUserId"] as! String
-                                let userEmail = json?["notionUserEmail"] as! String
-                                
-                                let notionUser = NotionUserInfo(email: userEmail, userId: userId)
-                                
-                                resultHandler(true, notionUser)
-                            } catch {
-                                resultHandler(false, nil)
-                            }
-                        }
-                    }
+            LDBServer.shared.getCurrentLoggedInUser { userInfo in
+                if let userInfo = userInfo {
+                    resultHandler(true, userInfo)
+                } else {
+                    resultHandler(false, nil)
                 }
             }
-            
-            task.resume()
         }
     }
     

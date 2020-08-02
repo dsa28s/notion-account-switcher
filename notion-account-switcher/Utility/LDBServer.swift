@@ -47,6 +47,38 @@ open class LDBServer {
         }
         killallProcess.launch()
     }
+    
+    public func getCurrentLoggedInUser(resultHandler: @escaping (NotionUserInfo?) -> Void) {
+        let request = NSMutableURLRequest(url: URL(string: "\(LDBServer.serverEntrypoint)/data/email")!)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) { data, response, error in
+            if let httpResponse = response as? HTTPURLResponse {
+                DispatchQueue.main.async {
+                    // Notion data not found (not logged in)
+                    if httpResponse.statusCode == 403 {
+                        resultHandler(nil)
+                    } else {
+                        guard let data = data, error == nil else { return }
+
+                        do {
+                            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
+                            let userId = json?["notionUserId"] as! String
+                            let userEmail = json?["notionUserEmail"] as! String
+                            
+                            let notionUser = NotionUserInfo(email: userEmail, userId: userId)
+                            
+                            resultHandler(notionUser)
+                        } catch {
+                            resultHandler(nil)
+                        }
+                    }
+                }
+            }
+        }
+        
+        task.resume()
+    }
 }
 
 public enum LDBServerError: Error {

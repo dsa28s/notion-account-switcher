@@ -21,7 +21,7 @@
 "PleaseNotionLoginDescription" = "Please login to Notion app and exit the Notion app.\n(If the screen stops, re-run Notion app and exit.)";
 
 "LoginSuccessNotificationTitle" = "Logged in.";
-"LoggedIn" = "Account";
+"LoggedIn" = "Logged In";
 
 "LoggedInAccount" = "Accounts";
 "AddAccount" = "Add Account";

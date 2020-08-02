@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NotionUserInfo {
+public struct NotionUserInfo {
     var email: String
     var userId: String
 }
