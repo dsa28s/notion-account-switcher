@@ -91,6 +91,27 @@ class PackageManager: NSObject {
         }
     }
     
+    class func applyNotionData(userId: String, email: String, completionHandler: @escaping () -> Void) {
+        let archivePath = "\(notionDataSavePath)/\(email)_\(userId.replacingOccurrences(of: "-", with: ""))"
+        var fileData = try? Data(contentsOf: URL(fileURLWithPath: "\(archivePath).nasud"))
+        
+        for _ in 0..<nasudMagicHeader.count {
+            fileData?.removeFirst()
+        }
+        
+        try? fileData?.write(to: URL(fileURLWithPath: "\(archivePath).tar"))
+        try? fileManager.createDirectory(at: URL(fileURLWithPath: notionDataPath), withIntermediateDirectories: true, attributes: nil)
+        
+        let killallProcess = Process()
+        killallProcess.launchPath = "/usr/bin/tar"
+        killallProcess.arguments = ["xvzf", "\(archivePath).tar", "-C", notionDataPath]
+        killallProcess.terminationHandler = { process in
+            try? fileManager.removeItem(atPath: "\(archivePath).tar")
+            completionHandler()
+        }
+        killallProcess.launch()
+    }
+    
     class final func getSavedNotionDatas() -> [NotionUserInfo] {
         guard let nasuds = try? fileManager.contentsOfDirectory(atPath: "\(notionDataSavePath)").filter({ (value: String) -> Bool in return (value.hasSuffix(".nasud")) }) else {
             return []
@@ -115,6 +136,22 @@ class PackageManager: NSObject {
             notion.forceTerminate()
         }
         
+        repeat {
+            Thread.sleep(forTimeInterval: 1.0)
+        } while (getNotion_NSRunningApplication().first != nil)
+        
         try? fileManager.removeItem(atPath: notionDataPath)
+    }
+    
+    class final func setAddMode(_ isAddMode: Bool) {
+        if isAddMode {
+            fileManager.createFile(atPath: "\(appDataPath)/ADDLOCK", contents: nil, attributes: nil)
+        } else {
+            try? fileManager.removeItem(atPath: "\(appDataPath)/ADDLOCK")
+        }
+    }
+    
+    class final func isAddMode() -> Bool {
+        return fileManager.fileExists(atPath: "\(appDataPath)/ADDLOCK")
     }
 }

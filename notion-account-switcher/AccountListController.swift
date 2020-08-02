@@ -13,18 +13,24 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     @IBOutlet weak var accountTable: NSTableView!
     @IBOutlet weak var addAccountButton: NSButton!
     @IBOutlet weak var removeAccountButton: NSButton!
+    @IBOutlet weak var loadingIndicator: NSProgressIndicator!
     
     private var notionDatas: [NotionUserInfo] = []
     private var currentLoggedInUser: NotionUserInfo?
+    private var currentLoggedInUserIdx = -1
     private var cachedFavicons: Dictionary<String, NSImage> = Dictionary()
     
     private var isEditMode = false
     
     override func viewDidLoad() {
+        PackageManager.setAddMode(false)
+        
         titleLabel.stringValue = NSLocalizedString("LoggedInAccount", comment: "")
         
         let pstyle = NSMutableParagraphStyle()
         pstyle.alignment = .center
+        
+        loadingIndicator.controlSize = .regular
         
         addAccountButton.changeLabel(localizedStringKey: "AddAccount")
         removeAccountButton.changeLabel(localizedStringKey: "RemoveAccount")
@@ -40,6 +46,7 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         accountTable.headerView = nil
         accountTable.delegate = self
         accountTable.dataSource = self
+        accountTable.doubleAction = #selector(self.tableDoubleClicked)
     }
     
     override func viewDidAppear() {
@@ -49,7 +56,15 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
 
     private func load() {
+        currentLoggedInUserIdx = -1
         notionDatas = PackageManager.getSavedNotionDatas()
+        
+        if notionDatas.count == 0 {
+            if let loadingController = storyboard?.instantiateController(withIdentifier: "LoadingController") as? LoadingController {
+                self.present(loadingController, animator: ReplacePresentationAnimator())
+            }
+        }
+        
         cachedFavicons = Dictionary()
         notionDatas.forEach { item in
             self.loadFavicons(email: item.email) { image in
@@ -79,6 +94,7 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         
         if let currentLoggedInUser = self.currentLoggedInUser {
             if self.notionDatas[row].userId == currentLoggedInUser.userId.replacingOccurrences(of: "-", with: "") {
+                currentLoggedInUserIdx = row
                 accountCell.setCurrentUserIsSameUser(true)
             } else {
                 accountCell.setCurrentUserIsSameUser(false)
@@ -96,10 +112,6 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         return notionDatas.count
     }
     
-    func changeButtonLabel(_ button: NSButton, localizedStringKey: String) {
-        
-    }
-    
     @IBAction func removeAccountAction(_ sender: Any) {
         if !self.isEditMode {
             self.isEditMode = true
@@ -112,6 +124,15 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         }
 
         self.accountTable.reloadData()
+    }
+    
+    @IBAction func addAccountAction(_ sender: Any) {
+        PackageManager.clearNotionApplicationData()
+        PackageManager.setAddMode(true)
+        
+        if let loadingController = storyboard?.instantiateController(withIdentifier: "LoadingController") as? LoadingController {
+            self.present(loadingController, animator: ReplacePresentationAnimator())
+        }
     }
     
     private func loadFavicons(email: String, completionHandler: @escaping (NSImage) -> Void) {
@@ -165,11 +186,36 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
             
             if response == .alertSecondButtonReturn {
                 PackageManager.removeUserData(email: notionUserInfo.email, userId: notionUserInfo.userId.replacingOccurrences(of: "-", with: ""))
+                
                 if isCurrentUser {
                     PackageManager.clearNotionApplicationData()
                 }
                 
                 self.load()
+            }
+        }
+    }
+    
+    @objc func tableDoubleClicked(sender: NSTableView) {
+        self.loadingIndicator.startAnimation(nil)
+        
+        let idx = sender.clickedRow
+        
+        if idx == currentLoggedInUserIdx {
+            NSWorkspace.shared.launchApplication("Notion")
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.loadingIndicator.stopAnimation(nil)
+            }
+        } else {
+            PackageManager.clearNotionApplicationData()
+            PackageManager.applyNotionData(userId: self.notionDatas[idx].userId.replacingOccurrences(of: "-", with: ""), email: self.notionDatas[idx].email) {
+                NSWorkspace.shared.launchApplication("Notion")
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    self.loadingIndicator.stopAnimation(nil)
+                    self.load()
+                }
             }
         }
     }

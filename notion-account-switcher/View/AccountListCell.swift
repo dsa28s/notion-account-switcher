@@ -21,7 +21,7 @@ class AccountListCell: NSTableCellView, LoadableView {
     
     var delegate: AccountListCellDelegate?
     
-    private var isCurrentUser = false
+    var isCurrentUser = false
     
     private var notionUserInfo: NotionUserInfo?
     

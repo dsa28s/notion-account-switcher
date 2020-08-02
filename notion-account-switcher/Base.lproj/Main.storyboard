@@ -67,7 +67,7 @@
         <!--Loading Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="LoadingController" customModule="notion_account_switcher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoadingController" id="XfG-lQ-9wD" customClass="LoadingController" customModule="notion_account_switcher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl" customClass="NSVisualEffectView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -110,29 +110,6 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gu1-TP-lFr">
-                                <rect key="frame" x="341" y="13" width="124" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="112" id="JBc-UB-5sz"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="{AddAccount}" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ueF-Xz-dZj">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GTY-9E-M5e">
-                                <rect key="frame" x="193" y="13" width="148" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="106" id="3yq-u7-bxH"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="{RemoveAccount}" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gii-dV-SBY">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="removeAccountAction:" target="c2O-Ci-O5o" id="HKf-vD-iDm"/>
-                                </connections>
-                            </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFZ-aE-Rgb">
                                 <rect key="frame" x="20" y="60" width="439" height="140"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Hcx-g2-OwT">
@@ -228,6 +205,35 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gu1-TP-lFr">
+                                <rect key="frame" x="341" y="13" width="124" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="112" id="JBc-UB-5sz"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="{AddAccount}" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ueF-Xz-dZj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="addAccountAction:" target="c2O-Ci-O5o" id="UNP-vh-VxC"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GTY-9E-M5e">
+                                <rect key="frame" x="193" y="13" width="148" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="106" id="3yq-u7-bxH"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="{RemoveAccount}" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gii-dV-SBY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="removeAccountAction:" target="c2O-Ci-O5o" id="HKf-vD-iDm"/>
+                                </connections>
+                            </button>
+                            <progressIndicator wantsLayer="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="5qQ-a2-5He">
+                                <rect key="frame" x="443" y="221" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="eXv-X9-se2" firstAttribute="top" secondItem="Olz-xr-ykV" secondAttribute="top" constant="20" id="7jd-yl-YHz"/>
@@ -236,7 +242,9 @@
                             <constraint firstItem="Gu1-TP-lFr" firstAttribute="leading" secondItem="GTY-9E-M5e" secondAttribute="trailing" constant="12" id="ZQH-b9-9H0"/>
                             <constraint firstAttribute="bottom" secondItem="Gu1-TP-lFr" secondAttribute="bottom" constant="20" id="cnd-dB-VaO"/>
                             <constraint firstItem="tFZ-aE-Rgb" firstAttribute="leading" secondItem="Olz-xr-ykV" secondAttribute="leading" constant="20" id="fpT-8e-N1j"/>
+                            <constraint firstItem="5qQ-a2-5He" firstAttribute="centerY" secondItem="eXv-X9-se2" secondAttribute="centerY" id="hjb-Ci-ky8"/>
                             <constraint firstAttribute="trailing" secondItem="Gu1-TP-lFr" secondAttribute="trailing" constant="20" id="idJ-Xz-l8z"/>
+                            <constraint firstAttribute="trailing" secondItem="5qQ-a2-5He" secondAttribute="trailing" constant="20" id="l2r-6A-MoC"/>
                             <constraint firstAttribute="trailing" secondItem="tFZ-aE-Rgb" secondAttribute="trailing" constant="20" id="omy-ER-6ll"/>
                             <constraint firstItem="tFZ-aE-Rgb" firstAttribute="top" secondItem="eXv-X9-se2" secondAttribute="bottom" constant="8" id="pkg-9S-4f9"/>
                             <constraint firstItem="GTY-9E-M5e" firstAttribute="top" secondItem="tFZ-aE-Rgb" secondAttribute="bottom" constant="19" id="sde-XG-Opy"/>
@@ -245,6 +253,7 @@
                     <connections>
                         <outlet property="accountTable" destination="NoY-ZS-h2z" id="KXB-4e-KJq"/>
                         <outlet property="addAccountButton" destination="Gu1-TP-lFr" id="uWU-qL-7ek"/>
+                        <outlet property="loadingIndicator" destination="5qQ-a2-5He" id="xez-s0-kHj"/>
                         <outlet property="removeAccountButton" destination="GTY-9E-M5e" id="WXh-6W-C6U"/>
                         <outlet property="titleLabel" destination="eXv-X9-se2" id="1df-of-vLV"/>
                     </connections>

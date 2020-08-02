@@ -47,11 +47,29 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
         let permissionStatus = PermissionsKit.authorizationStatus(for: .fullDiskAccess)
         
         #if DEBUG
-            self.checkNotionDataExist { isLoggedIn, userInfo in
-                if isLoggedIn {
-                    self.showAccountList()
+            if PackageManager.isAddMode() {
+                self.showNotionLoginInformation()
+            } else {
+                if PackageManager.getSavedNotionDatas().count > 0 {
+                    self.checkNotionDataExist { isLoggedIn, userInfo in
+                        if isLoggedIn {
+                            if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
+                                self.showAccountList()
+                            }
+                        } else {
+                            self.showAccountList()
+                        }
+                    }
                 } else {
-                    self.showNotionLoginInformation()
+                    self.checkNotionDataExist { isLoggedIn, userInfo in
+                        if isLoggedIn {
+                            if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
+                                self.showAccountList()
+                            }
+                        } else {
+                            self.showNotionLoginInformation()
+                        }
+                    }
                 }
             }
         #else
@@ -62,11 +80,25 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
                 permissionRequestView.add(toView: self.view)
                 permissionRequestView.delegate = self
             } else {
-                self.checkNotionDataExist { isLoggedIn, userInfo in
-                    if isLoggedIn {
-                        self.showAccountList()
-                    } else {
-                        self.showNotionLoginInformation()
+                if PackageManager.getSavedNotionDatas().count > 0 {
+                    self.checkNotionDataExist { isLoggedIn, userInfo in
+                        if isLoggedIn {
+                            if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
+                                self.showAccountList()
+                            }
+                        } else {
+                            self.showAccountList()
+                        }
+                    }
+                } else {
+                    self.checkNotionDataExist { isLoggedIn, userInfo in
+                        if isLoggedIn {
+                            if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
+                                self.showAccountList()
+                            }
+                        } else {
+                            self.showNotionLoginInformation()
+                        }
                     }
                 }
             }
