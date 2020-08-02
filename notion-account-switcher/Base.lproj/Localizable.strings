@@ -16,5 +16,9 @@
 "ServerNotRunningTitle" = "Some components not loaded.";
 "ServerNotRunningDescription" = "If the problem persists after re-running the app, please submit the problem with Github issue.";
 
+"OpeningNotionTitle" = "Launching Notion App...";
 "PleaseNotionLoginTitle" = "Login from Notion App";
 "PleaseNotionLoginDescription" = "Please login to Notion app and exit the Notion app.";
+
+"LoginSuccessNotificationTitle" = "Logged in.";
+"LoggedIn" = "Account";

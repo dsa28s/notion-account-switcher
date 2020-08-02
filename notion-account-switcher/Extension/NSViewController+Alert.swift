@@ -1,8 +1,8 @@
 // Copyright (c) 2020 Dora Lee
 //
 // Project : Notion Account Switcher for macOS
-// File Name : Extension/NSViewController+AlertSheet.swift
-// Description : Alert Sheet Extension for NSViewController
+// File Name : Extension/NSViewController+Alert.swift
+// Description : Alert (Sheet / Notification) Extension for NSViewController
 // Author: Dora Lee <lee@sanghun.io>
 
 import Foundation
@@ -28,5 +28,13 @@ extension NSViewController {
         alertSheet.beginSheetModal(for: self.view.window!) { (response) in
             responseHandler(response)
         }
+    }
+    
+    func postNotificationCenter(titleLocalizationKey: String, description: String) {
+        let notification = NSUserNotification()
+        notification.title = NSLocalizedString(titleLocalizationKey, comment: "")
+        notification.informativeText = description
+        notification.soundName = NSUserNotificationDefaultSoundName
+        NSUserNotificationCenter.default.deliver(notification)
     }
 }

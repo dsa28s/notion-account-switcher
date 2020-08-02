@@ -12,6 +12,7 @@ import PermissionsKit
 
 class LoadingController: NSViewController, PermissionRequestDelegate {
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    private var checkDataTimer: Timer?
 
     override func viewDidAppear() {
         super.viewDidLoad()
@@ -45,7 +46,13 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
         let permissionStatus = PermissionsKit.authorizationStatus(for: .fullDiskAccess)
         
         #if DEBUG
-            self.checkNotionDataExist()
+            self.checkNotionDataExist { isLoggedIn, userInfo in
+                if isLoggedIn {
+                    
+                } else {
+                    self.showNotionLoginInformation()
+                }
+            }
         #else
             if permissionStatus != .authorized {
                 self.progressIndicator.stopAnimation(nil)
@@ -59,7 +66,7 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
         #endif
     }
     
-    private func checkNotionDataExist() {
+    private func checkNotionDataExist(resultHandler: @escaping (Bool, NotionUserInfo?) -> Void) {
         if !LDBServer.shared.isRunning {
             showAlertSheet(alertStyle: .critical,
                            titleLocalizationKey: "ServerNotRunningTitle",
@@ -76,9 +83,21 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
                     DispatchQueue.main.async {
                         // Notion data not found (not logged in)
                         if httpResponse.statusCode == 403 {
-                            self.showNotionLoginInformation()
+                            resultHandler(false, nil)
                         } else {
-                            
+                            guard let data = data, error == nil else { return }
+
+                            do {
+                                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any]
+                                let userId = json?["notionUserId"] as! String
+                                let userEmail = json?["notionUserEmail"] as! String
+                                
+                                let notionUser = NotionUserInfo(email: userEmail, userId: userId)
+                                
+                                resultHandler(true, notionUser)
+                            } catch {
+                                resultHandler(false, nil)
+                            }
                         }
                     }
                 }
@@ -93,6 +112,32 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
         
         let notionLoginInformationView = LoginNotionLoadingView()
         notionLoginInformationView.add(toView: self.view)
+        
+        NSWorkspace.shared.launchApplication("Notion")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            notionLoginInformationView.changeTitleLabelToNotionApp()
+            
+            self.waitForLoginNotion()
+        }
+    }
+    
+    func waitForLoginNotion() {
+        checkDataTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(waitForLoginNotionTask), userInfo: nil, repeats: true)
+    }
+    
+    @objc func waitForLoginNotionTask() {
+        let runningNotionApps = NSWorkspace.shared.runningApplications.filter({ (value: NSRunningApplication) -> Bool in return (value.bundleIdentifier == "notion.id") } )
+        
+        if runningNotionApps.count == 0 {
+            checkNotionDataExist { (isLoggedIn, userInfo) in
+                if isLoggedIn {
+                    self.checkDataTimer?.invalidate()
+                    
+                    self.postNotificationCenter(titleLocalizationKey: "LoginSuccessNotificationTitle", description: "\(NSLocalizedString("LoggedIn", comment: "")) : \(userInfo!.email)")
+                }
+            }
+        }
     }
     
     func onPermissionRequest() {

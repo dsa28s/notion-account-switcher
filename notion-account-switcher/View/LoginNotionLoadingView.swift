@@ -28,10 +28,14 @@ class LoginNotionLoadingView: NSView, LoadableView {
     }
     
     fileprivate func initializeView() {
-        titleLabel.stringValue = NSLocalizedString("PleaseNotionLoginTitle", comment: "")
+        titleLabel.stringValue = NSLocalizedString("OpeningNotionTitle", comment: "")
         descriptionLabel.stringValue = NSLocalizedString("PleaseNotionLoginDescription", comment: "")
         
         loadingIndicator.controlSize = .regular
         loadingIndicator.startAnimation(nil)
+    }
+    
+    func changeTitleLabelToNotionApp() {
+        titleLabel.stringValue = NSLocalizedString("PleaseNotionLoginTitle", comment: "")
     }
 }

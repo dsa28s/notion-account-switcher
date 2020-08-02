@@ -14,5 +14,6 @@ class NASWindowController: NSWindowController {
         window?.titlebarAppearsTransparent = true
         window?.center()
         window?.styleMask.remove(NSWindow.StyleMask.resizable)
+        window?.level = .floating
     }
 }
