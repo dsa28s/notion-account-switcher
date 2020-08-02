@@ -5,6 +5,6 @@ target 'notion-account-switcher' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'PermissionsKit-macOS'
-  # Pods for notion-account-switcher
+  pod 'SWCompression', '~> 4.5'
 
 end

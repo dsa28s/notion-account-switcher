@@ -1,16 +1,60 @@
 PODS:
+  - BitByteData (1.4.3)
   - PermissionsKit-macOS (1.0.1)
+  - SWCompression (4.5.5):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/BZip2 (= 4.5.5)
+    - SWCompression/Deflate (= 4.5.5)
+    - SWCompression/GZip (= 4.5.5)
+    - SWCompression/LZMA (= 4.5.5)
+    - SWCompression/LZMA2 (= 4.5.5)
+    - SWCompression/SevenZip (= 4.5.5)
+    - SWCompression/TAR (= 4.5.5)
+    - SWCompression/XZ (= 4.5.5)
+    - SWCompression/ZIP (= 4.5.5)
+    - SWCompression/Zlib (= 4.5.5)
+  - SWCompression/BZip2 (4.5.5):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/Deflate (4.5.5):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/GZip (4.5.5):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/Deflate
+  - SWCompression/LZMA (4.5.5):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/LZMA2 (4.5.5):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/LZMA
+  - SWCompression/SevenZip (4.5.5):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/LZMA2
+  - SWCompression/TAR (4.5.5):
+    - BitByteData (~> 1.4.3)
+  - SWCompression/XZ (4.5.5):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/LZMA2
+  - SWCompression/ZIP (4.5.5):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/Deflate
+  - SWCompression/Zlib (4.5.5):
+    - BitByteData (~> 1.4.3)
+    - SWCompression/Deflate
 
 DEPENDENCIES:
   - PermissionsKit-macOS
+  - SWCompression (~> 4.5)
 
 SPEC REPOS:
   trunk:
+    - BitByteData
     - PermissionsKit-macOS
+    - SWCompression
 
 SPEC CHECKSUMS:
+  BitByteData: 36729e2125ec321935754f9feb1f4b297e00b501
   PermissionsKit-macOS: ae9f01fc3387e0b34bb25508802a287ffa4110f1
+  SWCompression: 2fdd928b49441e69ec87ee61530282dd11fa9c59
 
-PODFILE CHECKSUM: c7e34a97edb5e1eb838e67f3822b591394651367
+PODFILE CHECKSUM: 5d241b3078bba75a0c1372bf3bf9adb40798ff35
 
 COCOAPODS: 1.9.3

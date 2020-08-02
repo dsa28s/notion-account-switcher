@@ -11,6 +11,10 @@
 		BA2645B724C89923008FAF93 /* LoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2645B624C89923008FAF93 /* LoadingController.swift */; };
 		BA2645B924C89923008FAF93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA2645B824C89923008FAF93 /* Assets.xcassets */; };
 		BA2645BC24C89923008FAF93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA2645BA24C89923008FAF93 /* Main.storyboard */; };
+		BA286B4424D5BD01003C7B06 /* NSViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA286B4324D5BD01003C7B06 /* NSViewController+Alert.swift */; };
+		BA286B4824D5C839003C7B06 /* LoginNotionLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA286B4724D5C839003C7B06 /* LoginNotionLoadingView.xib */; };
+		BA286B4A24D5CA4B003C7B06 /* LoginNotionLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA286B4924D5CA4B003C7B06 /* LoginNotionLoadingView.swift */; };
+		BA286B4D24D5CE81003C7B06 /* NotionUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA286B4C24D5CE81003C7B06 /* NotionUserInfo.swift */; };
 		BA2F03CE24C9E24C005153E4 /* NASWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F03CD24C9E24C005153E4 /* NASWindowController.swift */; };
 		BA2F03D124C9E77B005153E4 /* PackageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F03D024C9E77B005153E4 /* PackageManager.swift */; };
 		BA2F03D624C9EC6D005153E4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BA2F03D424C9EC6D005153E4 /* Localizable.strings */; };
@@ -59,6 +63,10 @@
 		BA2645BB24C89923008FAF93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA2645BD24C89923008FAF93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA2645BE24C89923008FAF93 /* notion_account_switcher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = notion_account_switcher.entitlements; sourceTree = "<group>"; };
+		BA286B4324D5BD01003C7B06 /* NSViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Alert.swift"; sourceTree = "<group>"; };
+		BA286B4724D5C839003C7B06 /* LoginNotionLoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginNotionLoadingView.xib; sourceTree = "<group>"; };
+		BA286B4924D5CA4B003C7B06 /* LoginNotionLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNotionLoadingView.swift; sourceTree = "<group>"; };
+		BA286B4C24D5CE81003C7B06 /* NotionUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionUserInfo.swift; sourceTree = "<group>"; };
 		BA2F03CD24C9E24C005153E4 /* NASWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NASWindowController.swift; sourceTree = "<group>"; };
 		BA2F03D024C9E77B005153E4 /* PackageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageManager.swift; sourceTree = "<group>"; };
 		BA2F03D324C9EC4B005153E4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
@@ -133,6 +141,8 @@
 		BA2645B324C89923008FAF93 /* notion-account-switcher */ = {
 			isa = PBXGroup;
 			children = (
+				BA286B4B24D5CE76003C7B06 /* Model */,
+				BA286B4224D5BCEA003C7B06 /* Extension */,
 				BA4CB3F224D3215C002D4E13 /* View */,
 				BA2F03CF24C9E724005153E4 /* Utility */,
 				BA2F03CC24C9E228005153E4 /* View Controllers */,
@@ -144,6 +154,22 @@
 				BA2F03D424C9EC6D005153E4 /* Localizable.strings */,
 			);
 			path = "notion-account-switcher";
+			sourceTree = "<group>";
+		};
+		BA286B4224D5BCEA003C7B06 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BA286B4324D5BD01003C7B06 /* NSViewController+Alert.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		BA286B4B24D5CE76003C7B06 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BA286B4C24D5CE81003C7B06 /* NotionUserInfo.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BA2F03CC24C9E228005153E4 /* View Controllers */ = {
@@ -169,6 +195,8 @@
 			children = (
 				BA4CB3F324D32175002D4E13 /* PermissionRequestView.xib */,
 				BA4CB3F524D32196002D4E13 /* PermissionRequestView.swift */,
+				BA286B4724D5C839003C7B06 /* LoginNotionLoadingView.xib */,
+				BA286B4924D5CA4B003C7B06 /* LoginNotionLoadingView.swift */,
 				BA4CB3F724D3286A002D4E13 /* Nib.swift */,
 			);
 			path = View;
@@ -269,6 +297,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA286B4824D5C839003C7B06 /* LoginNotionLoadingView.xib in Resources */,
 				BA2645B924C89923008FAF93 /* Assets.xcassets in Resources */,
 				BA2F03D624C9EC6D005153E4 /* Localizable.strings in Resources */,
 				BA2645BC24C89923008FAF93 /* Main.storyboard in Resources */,
@@ -334,8 +363,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA286B4424D5BD01003C7B06 /* NSViewController+Alert.swift in Sources */,
 				BA2645B724C89923008FAF93 /* LoadingController.swift in Sources */,
 				BA2F03CE24C9E24C005153E4 /* NASWindowController.swift in Sources */,
+				BA286B4D24D5CE81003C7B06 /* NotionUserInfo.swift in Sources */,
+				BA286B4A24D5CA4B003C7B06 /* LoginNotionLoadingView.swift in Sources */,
 				BA4CB3F824D3286A002D4E13 /* Nib.swift in Sources */,
 				BAB219CA24D1D50E00174358 /* LDBServer.swift in Sources */,
 				BA4CB3F624D32196002D4E13 /* PermissionRequestView.swift in Sources */,
