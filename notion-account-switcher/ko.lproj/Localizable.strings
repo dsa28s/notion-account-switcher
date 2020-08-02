@@ -7,6 +7,7 @@
 
 "OK" = "확인";
 "Allow" = "허용";
+"Done" = "완료";
 "NotionAppNotInstalledErrorTitle" = "Notion 앱이 설치되어 있지 않습니다.";
 "NotionAppNotInstalledErrorTitle" = "Notion 을 설치 후, 다시 실행해주세요.";
 

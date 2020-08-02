@@ -95,11 +95,11 @@
             <objects>
                 <viewController storyboardIdentifier="AccountListController" showSeguePresentationStyle="single" id="c2O-Ci-O5o" customClass="AccountListController" customModule="notion_account_switcher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Olz-xr-ykV" customClass="NSVisualEffectView">
-                        <rect key="frame" x="0.0" y="0.0" width="479" height="305"/>
+                        <rect key="frame" x="0.0" y="0.0" width="479" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eXv-X9-se2">
-                                <rect key="frame" x="18" y="243" width="213" height="42"/>
+                                <rect key="frame" x="18" y="208" width="213" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="209" id="QNC-5u-jfk"/>
                                     <constraint firstAttribute="height" constant="42" id="hCV-BI-m2G"/>
@@ -129,15 +129,18 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="removeAccountAction:" target="c2O-Ci-O5o" id="HKf-vD-iDm"/>
+                                </connections>
                             </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFZ-aE-Rgb">
-                                <rect key="frame" x="20" y="60" width="439" height="175"/>
+                                <rect key="frame" x="20" y="60" width="439" height="140"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Hcx-g2-OwT">
-                                    <rect key="frame" x="1" y="0.0" width="437" height="174"/>
+                                    <rect key="frame" x="1" y="0.0" width="437" height="139"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="v6R-so-l9Y" viewBased="YES" id="NoY-ZS-h2z">
-                                            <rect key="frame" x="0.0" y="0.0" width="437" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="437" height="114"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

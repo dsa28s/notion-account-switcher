@@ -7,6 +7,7 @@
 
 "OK" = "OK";
 "Allow" = "Allow";
+"Done" = "Done";
 "NotionAppNotInstalledErrorTitle" = "Notion App not installed.";
 "NotionAppNotInstalledErrorDescription" = "No Notion app installed. Notion Account Switcher requires a notion app.";
 
