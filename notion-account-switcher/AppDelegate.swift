@@ -7,11 +7,13 @@
 
 import Cocoa
 import ServiceManagement
+import Sparkle
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         SMLoginItemSetEnabled(Bundle.main.bundleIdentifier! as CFString, true)
+        SUUpdater.init().automaticallyChecksForUpdates = true
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

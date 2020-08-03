@@ -6,4 +6,5 @@ target 'notion-account-switcher' do
   use_frameworks!
   pod 'PermissionsKit-macOS'
   pod 'tarkit', '~> 0.1.3'
+  pod 'Sparkle'
 end

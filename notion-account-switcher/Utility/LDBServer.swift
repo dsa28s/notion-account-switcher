@@ -14,9 +14,15 @@ open class LDBServer {
     
     private var serverProcess: Process? = nil
     
+    private var serverResourcesPath: String {
+        get {
+            return "\(Bundle.main.builtInPlugInsPath!)/NotionAccountSwitcherLDBServer.bundle/Contents/Resources"
+        }
+    }
+    
     private var serverBinaryPath: String {
         get {
-            return "\(Bundle.main.builtInPlugInsPath!)/NotionAccountSwitcherLDBServer.bundle/Contents/Resources/NotionAccountSwitcherLDBServer"
+            return "\(serverResourcesPath)/LDBServerNode"
         }
     }
     
@@ -30,6 +36,7 @@ open class LDBServer {
         self.stopServer() {
             self.serverProcess = Process()
             self.serverProcess?.launchPath = self.serverBinaryPath
+            self.serverProcess?.arguments = ["\(self.serverResourcesPath)/index.js"]
             self.serverProcess?.launch()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -41,7 +48,7 @@ open class LDBServer {
     public func stopServer(completionHandler: @escaping () -> Void) {
         let killallProcess = Process()
         killallProcess.launchPath = "/usr/bin/killall"
-        killallProcess.arguments = ["NotionAccountSwitcherLDBServer"]
+        killallProcess.arguments = ["LDBServerNode"]
         killallProcess.terminationHandler = { process in
             completionHandler()
         }
