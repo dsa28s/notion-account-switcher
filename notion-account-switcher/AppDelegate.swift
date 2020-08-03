@@ -12,7 +12,7 @@ import Sparkle
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        SMLoginItemSetEnabled(Bundle.main.bundleIdentifier! as CFString, true)
+        NSObject.startUpLogin()
         SUUpdater.init().automaticallyChecksForUpdates = true
     }
 

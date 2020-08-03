@@ -20,8 +20,9 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     private var currentLoggedInUserIdx = -1
     private var cachedFavicons: Dictionary<String, NSImage> = Dictionary()
     
-    private let touchBarControlStrip = NSCustomTouchBarItem.Identifier("io.sanghun.notion.account.switcher.controlStrip")
+    private let touchBarControlStrip = NSTouchBarItem.Identifier("io.sanghun.notion.account.switcher.controlStrip")
     private var stripTouchBarItem: NSCustomTouchBarItem?
+    private var stripTouchBar: NSTouchBar?
     
     private var isEditMode = false
     private var isNotionFocused = false
@@ -81,13 +82,11 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         
         let notionData = notionUserInfo
         let customViewItem = NSCustomTouchBarItem(identifier: identifier)
-        let button = NSButton(title: notionData!.email.count > 15 ? String("\(notionData!.email.prefix(15))...") : notionData!.email, target: self, action: nil)
+        let button = NSButton(title: notionData!.email.count > 15 ? String("\(notionData!.email.prefix(15))...") : notionData!.email, target: self, action: #selector(self.touchBarButtonClicked(sender:)))
         let favicon = cachedFavicons[notionData?.email ?? ""]
         favicon?.size = NSSize(width: 24.0, height: 24.0)
         button.image = favicon
         button.imagePosition = .imageLeft
-        
-        button.action = #selector(self.touchBarButtonClicked(sender:))
         
         customViewItem.view = button
         
@@ -286,12 +285,16 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         if PackageManager.isNotionAppFocused() {
             if !isNotionFocused {
                 isNotionFocused = true
-                DFRSystemModalShowsCloseBoxWhenFrontMost(false)
+                DFRSystemModalShowsCloseBoxWhenFrontMost(true)
+                
                 self.stripTouchBarItem = NSCustomTouchBarItem(identifier: self.touchBarControlStrip)
                 let notionIcon = NSImage(named: "Notion")
                 notionIcon!.size = NSSize(width: 20.0, height: 20.0)
                 self.stripTouchBarItem?.view = NSButton(image: notionIcon!, target: self, action: #selector(presentTouchBar))
                 NSTouchBarItem.addSystemTrayItem(self.stripTouchBarItem)
+                
+                self.stripTouchBar = makeTouchBar()
+                
                 DFRElementSetControlStripPresenceForIdentifier(self.touchBarControlStrip, true)
             }
         } else {
@@ -299,11 +302,12 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
                 isNotionFocused = false
                 NSTouchBarItem.removeSystemTrayItem(self.stripTouchBarItem!)
                 self.stripTouchBarItem = nil
+                self.stripTouchBar = nil
             }
         }
     }
     
     @objc func presentTouchBar() {
-        presentSystemModal(makeTouchBar()!, systemTrayItemIdentifier: NSCustomTouchBarItem.Identifier("io.sanghun.notion.account.switcher.controlStrip"))
+        presentSystemModal(self.stripTouchBar, systemTrayItemIdentifier: self.touchBarControlStrip)
     }
 }

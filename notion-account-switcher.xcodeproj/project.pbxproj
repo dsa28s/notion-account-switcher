@@ -40,6 +40,7 @@
 		BAD9F12724D80C1800983BDB /* constant.js in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F11D24D80C1800983BDB /* constant.js */; };
 		BAD9F12824D80C1800983BDB /* repository in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F11E24D80C1800983BDB /* repository */; };
 		BAD9F12A24D80C8200983BDB /* LDBServerNode in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F12924D80C8200983BDB /* LDBServerNode */; };
+		BAD9F12D24D835A200983BDB /* StartUp.m in Sources */ = {isa = PBXBuildFile; fileRef = BAD9F12C24D835A200983BDB /* StartUp.m */; };
 		E8E3F71E814CA79A670690CE /* Pods_notion_account_switcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BFC7400965C414B6895C2AB /* Pods_notion_account_switcher.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +113,8 @@
 		BAD9F11D24D80C1800983BDB /* constant.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = constant.js; sourceTree = "<group>"; };
 		BAD9F11E24D80C1800983BDB /* repository */ = {isa = PBXFileReference; lastKnownFileType = folder; path = repository; sourceTree = "<group>"; };
 		BAD9F12924D80C8200983BDB /* LDBServerNode */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = LDBServerNode; sourceTree = "<group>"; };
+		BAD9F12B24D835A200983BDB /* StartUp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartUp.h; sourceTree = "<group>"; };
+		BAD9F12C24D835A200983BDB /* StartUp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartUp.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +228,8 @@
 				BAB219C924D1D50E00174358 /* LDBServer.swift */,
 				BAD9F10924D7E56B00983BDB /* TouchBarPrivateApi.h */,
 				BAD9F11124D7E82400983BDB /* SupportNSTouchBar.swift */,
+				BAD9F12B24D835A200983BDB /* StartUp.h */,
+				BAD9F12C24D835A200983BDB /* StartUp.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 				BA311FDC24D710F000B348BC /* AccountListCell.swift in Sources */,
 				BA286B4424D5BD01003C7B06 /* NSViewController+Alert.swift in Sources */,
 				BA311FD824D7059500B348BC /* ReplacePresentationAnimator.swift in Sources */,
+				BAD9F12D24D835A200983BDB /* StartUp.m in Sources */,
 				BA2645B724C89923008FAF93 /* LoadingController.swift in Sources */,
 				BA2F03CE24C9E24C005153E4 /* NASWindowController.swift in Sources */,
 				BA286B4D24D5CE81003C7B06 /* NotionUserInfo.swift in Sources */,
@@ -604,7 +610,7 @@
 				CODE_SIGN_ENTITLEMENTS = "notion-account-switcher/notion_account_switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 49;
 				DEVELOPMENT_TEAM = T7Q559P978;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "notion-account-switcher/Info.plist";
@@ -635,7 +641,7 @@
 				CODE_SIGN_ENTITLEMENTS = "notion-account-switcher/notion_account_switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 49;
 				DEVELOPMENT_TEAM = T7Q559P978;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "notion-account-switcher/Info.plist";

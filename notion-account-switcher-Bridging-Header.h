@@ -3,3 +3,4 @@
 //
 
 #include "TouchBarPrivateApi.h"
+#include "StartUp.h"
