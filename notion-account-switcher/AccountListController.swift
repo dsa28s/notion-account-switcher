@@ -20,7 +20,11 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     private var currentLoggedInUserIdx = -1
     private var cachedFavicons: Dictionary<String, NSImage> = Dictionary()
     
+    private let touchBarControlStrip = NSCustomTouchBarItem.Identifier("io.sanghun.notion.account.switcher.controlStrip")
+    private var stripTouchBarItem: NSCustomTouchBarItem?
+    
     private var isEditMode = false
+    private var isNotionFocused = false
     
     override func viewDidLoad() {
         PackageManager.setAddMode(false)
@@ -53,6 +57,9 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         super.viewDidAppear()
         
         load()
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+            self.setupControlStripPresence()
+        }
     }
     
     override func makeTouchBar() -> NSTouchBar? {
@@ -268,5 +275,30 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         if let userInfo = notionDatas.filter({ (value: NotionUserInfo) -> Bool in return (value.email == email) }).first {
             self.openNotion(notionUserInfo: userInfo)
         }
+    }
+    
+    func setupControlStripPresence() {
+        if PackageManager.isNotionAppFocused() {
+            if !isNotionFocused {
+                isNotionFocused = true
+                DFRSystemModalShowsCloseBoxWhenFrontMost(false)
+                self.stripTouchBarItem = NSCustomTouchBarItem(identifier: self.touchBarControlStrip)
+                let notionIcon = NSImage(named: "Notion")
+                notionIcon!.size = NSSize(width: 20.0, height: 20.0)
+                self.stripTouchBarItem?.view = NSButton(image: notionIcon!, target: self, action: #selector(presentTouchBar))
+                NSTouchBarItem.addSystemTrayItem(self.stripTouchBarItem)
+                DFRElementSetControlStripPresenceForIdentifier(self.touchBarControlStrip, true)
+            }
+        } else {
+            if isNotionFocused {
+                isNotionFocused = false
+                NSTouchBarItem.removeSystemTrayItem(self.stripTouchBarItem!)
+                self.stripTouchBarItem = nil
+            }
+        }
+    }
+    
+    @objc func presentTouchBar() {
+        presentSystemModal(makeTouchBar()!, systemTrayItemIdentifier: NSCustomTouchBarItem.Identifier("io.sanghun.notion.account.switcher.controlStrip"))
     }
 }

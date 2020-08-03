@@ -30,6 +30,9 @@
 		BAB219BF24D1D12D00174358 /* prebuilds in Resources */ = {isa = PBXBuildFile; fileRef = BAB219BD24D1D12D00174358 /* prebuilds */; };
 		BAB219C024D1D16E00174358 /* NotionAccountSwitcherLDBServer.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = BAB219B624D1D0DE00174358 /* NotionAccountSwitcherLDBServer.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BAB219CA24D1D50E00174358 /* LDBServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB219C924D1D50E00174358 /* LDBServer.swift */; };
+		BAD9F10B24D7E5C300983BDB /* DFRFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD9F10A24D7E5C300983BDB /* DFRFoundation.framework */; };
+		BAD9F10C24D7E5C300983BDB /* DFRFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BAD9F10A24D7E5C300983BDB /* DFRFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BAD9F11224D7E82400983BDB /* SupportNSTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD9F11124D7E82400983BDB /* SupportNSTouchBar.swift */; };
 		E8E3F71E814CA79A670690CE /* Pods_notion_account_switcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BFC7400965C414B6895C2AB /* Pods_notion_account_switcher.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +56,17 @@
 				BAB219C024D1D16E00174358 /* NotionAccountSwitcherLDBServer.bundle in Embed PlugIns */,
 			);
 			name = "Embed PlugIns";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BAD9F10D24D7E5C300983BDB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BAD9F10C24D7E5C300983BDB /* DFRFoundation.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -90,6 +104,10 @@
 		BAB219BC24D1D12D00174358 /* NotionAccountSwitcherLDBServer */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = NotionAccountSwitcherLDBServer; path = ../../../LDBServer/NotionAccountSwitcherLDBServer; sourceTree = "<group>"; };
 		BAB219BD24D1D12D00174358 /* prebuilds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = prebuilds; path = ../../../LDBServer/prebuilds; sourceTree = "<group>"; };
 		BAB219C924D1D50E00174358 /* LDBServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDBServer.swift; sourceTree = "<group>"; };
+		BAD9F10924D7E56B00983BDB /* TouchBarPrivateApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchBarPrivateApi.h; sourceTree = "<group>"; };
+		BAD9F10A24D7E5C300983BDB /* DFRFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DFRFoundation.framework; path = ../../../../../System/Library/PrivateFrameworks/DFRFoundation.framework; sourceTree = "<group>"; };
+		BAD9F10E24D7E5F700983BDB /* notion-account-switcher-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "notion-account-switcher-Bridging-Header.h"; sourceTree = "<group>"; };
+		BAD9F11124D7E82400983BDB /* SupportNSTouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportNSTouchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAD9F10B24D7E5C300983BDB /* DFRFoundation.framework in Frameworks */,
 				E8E3F71E814CA79A670690CE /* Pods_notion_account_switcher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +142,7 @@
 		B33DF8AA9276EE1358D381A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BAD9F10A24D7E5C300983BDB /* DFRFoundation.framework */,
 				4BFC7400965C414B6895C2AB /* Pods_notion_account_switcher.framework */,
 			);
 			name = Frameworks;
@@ -136,6 +156,7 @@
 				BA2645B224C89923008FAF93 /* Products */,
 				AFB88271115FD03590158E45 /* Pods */,
 				B33DF8AA9276EE1358D381A5 /* Frameworks */,
+				BAD9F10E24D7E5F700983BDB /* notion-account-switcher-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -198,6 +219,8 @@
 			children = (
 				BA2F03D024C9E77B005153E4 /* PackageManager.swift */,
 				BAB219C924D1D50E00174358 /* LDBServer.swift */,
+				BAD9F10924D7E56B00983BDB /* TouchBarPrivateApi.h */,
+				BAD9F11124D7E82400983BDB /* SupportNSTouchBar.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -240,6 +263,7 @@
 				BA2645AF24C89923008FAF93 /* Resources */,
 				BAB219C324D1D16E00174358 /* Embed PlugIns */,
 				0A90F90D92708A1E85F8A6F6 /* [CP] Embed Pods Frameworks */,
+				BAD9F10D24D7E5C300983BDB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -280,6 +304,7 @@
 				TargetAttributes = {
 					BA2645B024C89923008FAF93 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1160;
 					};
 					BAB219B524D1D0DE00174358 = {
 						CreatedOnToolsVersion = 11.6;
@@ -389,6 +414,7 @@
 				BA311FDE24D7270D00B348BC /* NSButton+Label.swift in Sources */,
 				BA4CB3F824D3286A002D4E13 /* Nib.swift in Sources */,
 				BAB219CA24D1D50E00174358 /* LDBServer.swift in Sources */,
+				BAD9F11224D7E82400983BDB /* SupportNSTouchBar.swift in Sources */,
 				BA4CB3F624D32196002D4E13 /* PermissionRequestView.swift in Sources */,
 				BA2F03D124C9E77B005153E4 /* PackageManager.swift in Sources */,
 				BA311FD624D6FC6400B348BC /* AccountListController.swift in Sources */,
@@ -555,6 +581,7 @@
 			baseConfigurationReference = 45B6BD2DBBEE3834F56C22BC /* Pods-notion-account-switcher.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "notion-account-switcher/notion_account_switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -568,7 +595,13 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = io.sanghun.notion.account.switcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "notion-account-switcher-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Debug;
 		};
@@ -577,6 +610,7 @@
 			baseConfigurationReference = 67F4CE9D30DB3089EC7CDED1 /* Pods-notion-account-switcher.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "notion-account-switcher/notion_account_switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -590,7 +624,12 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = io.sanghun.notion.account.switcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "notion-account-switcher-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
+				);
 			};
 			name = Release;
 		};

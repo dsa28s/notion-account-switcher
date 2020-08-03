@@ -1,7 +1,7 @@
 // Copyright (c) 2020 Dora Lee
 //
 // Project : Notion Account Switcher for macOS
-// File Name : NotionAccountSwitcherLDBServer/LDBServer.swift
+// File Name : Utility/LDBServer.swift
 // Description : LevelDB Server for Notion Account Switcher
 // Author: Dora Lee <lee@sanghun.io>
 

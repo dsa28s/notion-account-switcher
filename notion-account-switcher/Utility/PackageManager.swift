@@ -1,7 +1,7 @@
 // Copyright (c) 2020 Dora Lee
 //
 // Project : Notion Account Switcher for macOS
-// File Name : Utility/LoadingController.swift
+// File Name : Utility/PackageManager.swift
 // Description : Package Manager for app.
 // Author: Dora Lee <lee@sanghun.io>
 
@@ -59,6 +59,11 @@ class PackageManager: NSObject {
     class final func isRunningNotion() -> Bool {
         let runningNotionApps = getNotion_NSRunningApplication()
         return runningNotionApps.count > 0
+    }
+    
+    class final func isNotionAppFocused() -> Bool {
+        let runningNotionApps = getNotion_NSRunningApplication()
+        return runningNotionApps.first?.isActive ?? false
     }
     
     class final func archiveNotionAppData(userId: String, email: String) -> Bool {

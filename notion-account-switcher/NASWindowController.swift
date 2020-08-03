@@ -15,5 +15,7 @@ class NASWindowController: NSWindowController {
         window?.center()
         window?.styleMask.remove(NSWindow.StyleMask.resizable)
         window?.level = .floating
+        
+        NSApplication.shared.activate(ignoringOtherApps: true)
     }
 }
