@@ -70,6 +70,7 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         self.notionDatas.forEach {
             identifiers.append(NSTouchBarItem.Identifier("touchBar_\($0.userId.replacingOccurrences(of: "-", with: ""))"))
         }
+
         touchBar.defaultItemIdentifiers = identifiers
         return touchBar
     }
@@ -80,7 +81,7 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         
         let notionData = notionUserInfo
         let customViewItem = NSCustomTouchBarItem(identifier: identifier)
-        let button = NSButton(title: notionData?.email ?? "", target: self, action: nil)
+        let button = NSButton(title: notionData!.email.count > 15 ? String("\(notionData!.email.prefix(15))...") : notionData!.email, target: self, action: nil)
         let favicon = cachedFavicons[notionData?.email ?? ""]
         favicon?.size = NSSize(width: 24.0, height: 24.0)
         button.image = favicon
@@ -94,30 +95,32 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
 
     private func load() {
-        currentLoggedInUserIdx = -1
-        notionDatas = PackageManager.getSavedNotionDatas()
-        
-        if notionDatas.count == 0 {
-            DispatchQueue.main.async {
-                if let loadingController = self.storyboard?.instantiateController(withIdentifier: "LoadingController") as? LoadingController {
-                    self.present(loadingController, animator: ReplacePresentationAnimator())
+        DispatchQueue.main.async {
+            self.currentLoggedInUserIdx = -1
+            self.notionDatas = PackageManager.getSavedNotionDatas()
+            
+            if self.notionDatas.count == 0 {
+                DispatchQueue.main.async {
+                    if let loadingController = self.storyboard?.instantiateController(withIdentifier: "LoadingController") as? LoadingController {
+                        self.present(loadingController, animator: ReplacePresentationAnimator())
+                    }
                 }
             }
-        }
-        
-        cachedFavicons = Dictionary()
-        notionDatas.forEach { item in
-            self.loadFavicons(email: item.email) { image in
-                self.cachedFavicons[item.email] = image
+            
+            self.cachedFavicons = Dictionary()
+            self.notionDatas.forEach { item in
+                self.loadFavicons(email: item.email) { image in
+                    self.cachedFavicons[item.email] = image
+                    self.accountTable.reloadData()
+                    self.touchBar = nil
+                }
+            }
+            
+            LDBServer.shared.getCurrentLoggedInUser { user in
+                self.currentLoggedInUser = user
                 self.accountTable.reloadData()
                 self.touchBar = nil
             }
-        }
-        
-        LDBServer.shared.getCurrentLoggedInUser { user in
-            self.currentLoggedInUser = user
-            self.accountTable.reloadData()
-            self.touchBar = nil
         }
     }
     

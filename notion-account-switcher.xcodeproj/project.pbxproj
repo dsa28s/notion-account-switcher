@@ -26,13 +26,20 @@
 		BA4CB3F424D32175002D4E13 /* PermissionRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA4CB3F324D32175002D4E13 /* PermissionRequestView.xib */; };
 		BA4CB3F624D32196002D4E13 /* PermissionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4CB3F524D32196002D4E13 /* PermissionRequestView.swift */; };
 		BA4CB3F824D3286A002D4E13 /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4CB3F724D3286A002D4E13 /* Nib.swift */; };
-		BAB219BE24D1D12D00174358 /* NotionAccountSwitcherLDBServer in Resources */ = {isa = PBXBuildFile; fileRef = BAB219BC24D1D12D00174358 /* NotionAccountSwitcherLDBServer */; };
-		BAB219BF24D1D12D00174358 /* prebuilds in Resources */ = {isa = PBXBuildFile; fileRef = BAB219BD24D1D12D00174358 /* prebuilds */; };
 		BAB219C024D1D16E00174358 /* NotionAccountSwitcherLDBServer.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = BAB219B624D1D0DE00174358 /* NotionAccountSwitcherLDBServer.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BAB219CA24D1D50E00174358 /* LDBServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB219C924D1D50E00174358 /* LDBServer.swift */; };
 		BAD9F10B24D7E5C300983BDB /* DFRFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAD9F10A24D7E5C300983BDB /* DFRFoundation.framework */; };
-		BAD9F10C24D7E5C300983BDB /* DFRFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BAD9F10A24D7E5C300983BDB /* DFRFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BAD9F11224D7E82400983BDB /* SupportNSTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD9F11124D7E82400983BDB /* SupportNSTouchBar.swift */; };
+		BAD9F11F24D80C1800983BDB /* controller in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F11524D80C1600983BDB /* controller */; };
+		BAD9F12024D80C1800983BDB /* package-lock.json in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F11624D80C1600983BDB /* package-lock.json */; };
+		BAD9F12224D80C1800983BDB /* utils in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F11824D80C1700983BDB /* utils */; };
+		BAD9F12324D80C1800983BDB /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F11924D80C1700983BDB /* index.js */; };
+		BAD9F12424D80C1800983BDB /* node_modules in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F11A24D80C1700983BDB /* node_modules */; };
+		BAD9F12524D80C1800983BDB /* error in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F11B24D80C1700983BDB /* error */; };
+		BAD9F12624D80C1800983BDB /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F11C24D80C1800983BDB /* package.json */; };
+		BAD9F12724D80C1800983BDB /* constant.js in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F11D24D80C1800983BDB /* constant.js */; };
+		BAD9F12824D80C1800983BDB /* repository in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F11E24D80C1800983BDB /* repository */; };
+		BAD9F12A24D80C8200983BDB /* LDBServerNode in Resources */ = {isa = PBXBuildFile; fileRef = BAD9F12924D80C8200983BDB /* LDBServerNode */; };
 		E8E3F71E814CA79A670690CE /* Pods_notion_account_switcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BFC7400965C414B6895C2AB /* Pods_notion_account_switcher.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,17 +63,6 @@
 				BAB219C024D1D16E00174358 /* NotionAccountSwitcherLDBServer.bundle in Embed PlugIns */,
 			);
 			name = "Embed PlugIns";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BAD9F10D24D7E5C300983BDB /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				BAD9F10C24D7E5C300983BDB /* DFRFoundation.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -101,13 +97,21 @@
 		BA4CB3F724D3286A002D4E13 /* Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		BAB219B624D1D0DE00174358 /* NotionAccountSwitcherLDBServer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotionAccountSwitcherLDBServer.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB219B824D1D0DE00174358 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BAB219BC24D1D12D00174358 /* NotionAccountSwitcherLDBServer */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = NotionAccountSwitcherLDBServer; path = ../../../LDBServer/NotionAccountSwitcherLDBServer; sourceTree = "<group>"; };
-		BAB219BD24D1D12D00174358 /* prebuilds */ = {isa = PBXFileReference; lastKnownFileType = folder; name = prebuilds; path = ../../../LDBServer/prebuilds; sourceTree = "<group>"; };
 		BAB219C924D1D50E00174358 /* LDBServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LDBServer.swift; sourceTree = "<group>"; };
 		BAD9F10924D7E56B00983BDB /* TouchBarPrivateApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchBarPrivateApi.h; sourceTree = "<group>"; };
 		BAD9F10A24D7E5C300983BDB /* DFRFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DFRFoundation.framework; path = ../../../../../System/Library/PrivateFrameworks/DFRFoundation.framework; sourceTree = "<group>"; };
 		BAD9F10E24D7E5F700983BDB /* notion-account-switcher-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "notion-account-switcher-Bridging-Header.h"; sourceTree = "<group>"; };
 		BAD9F11124D7E82400983BDB /* SupportNSTouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportNSTouchBar.swift; sourceTree = "<group>"; };
+		BAD9F11524D80C1600983BDB /* controller */ = {isa = PBXFileReference; lastKnownFileType = folder; path = controller; sourceTree = "<group>"; };
+		BAD9F11624D80C1600983BDB /* package-lock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "package-lock.json"; sourceTree = "<group>"; };
+		BAD9F11824D80C1700983BDB /* utils */ = {isa = PBXFileReference; lastKnownFileType = folder; path = utils; sourceTree = "<group>"; };
+		BAD9F11924D80C1700983BDB /* index.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = index.js; sourceTree = "<group>"; };
+		BAD9F11A24D80C1700983BDB /* node_modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = node_modules; sourceTree = "<group>"; };
+		BAD9F11B24D80C1700983BDB /* error */ = {isa = PBXFileReference; lastKnownFileType = folder; path = error; sourceTree = "<group>"; };
+		BAD9F11C24D80C1800983BDB /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		BAD9F11D24D80C1800983BDB /* constant.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = constant.js; sourceTree = "<group>"; };
+		BAD9F11E24D80C1800983BDB /* repository */ = {isa = PBXFileReference; lastKnownFileType = folder; path = repository; sourceTree = "<group>"; };
+		BAD9F12924D80C8200983BDB /* LDBServerNode */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = LDBServerNode; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,8 +247,16 @@
 		BAB219B724D1D0DE00174358 /* NotionAccountSwitcherLDBServer */ = {
 			isa = PBXGroup;
 			children = (
-				BAB219BC24D1D12D00174358 /* NotionAccountSwitcherLDBServer */,
-				BAB219BD24D1D12D00174358 /* prebuilds */,
+				BAD9F12924D80C8200983BDB /* LDBServerNode */,
+				BAD9F11D24D80C1800983BDB /* constant.js */,
+				BAD9F11524D80C1600983BDB /* controller */,
+				BAD9F11B24D80C1700983BDB /* error */,
+				BAD9F11924D80C1700983BDB /* index.js */,
+				BAD9F11A24D80C1700983BDB /* node_modules */,
+				BAD9F11624D80C1600983BDB /* package-lock.json */,
+				BAD9F11C24D80C1800983BDB /* package.json */,
+				BAD9F11E24D80C1800983BDB /* repository */,
+				BAD9F11824D80C1700983BDB /* utils */,
 				BAB219B824D1D0DE00174358 /* Info.plist */,
 			);
 			path = NotionAccountSwitcherLDBServer;
@@ -263,7 +275,6 @@
 				BA2645AF24C89923008FAF93 /* Resources */,
 				BAB219C324D1D16E00174358 /* Embed PlugIns */,
 				0A90F90D92708A1E85F8A6F6 /* [CP] Embed Pods Frameworks */,
-				BAD9F10D24D7E5C300983BDB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -350,8 +361,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAB219BE24D1D12D00174358 /* NotionAccountSwitcherLDBServer in Resources */,
-				BAB219BF24D1D12D00174358 /* prebuilds in Resources */,
+				BAD9F12624D80C1800983BDB /* package.json in Resources */,
+				BAD9F12324D80C1800983BDB /* index.js in Resources */,
+				BAD9F11F24D80C1800983BDB /* controller in Resources */,
+				BAD9F12824D80C1800983BDB /* repository in Resources */,
+				BAD9F12224D80C1800983BDB /* utils in Resources */,
+				BAD9F12424D80C1800983BDB /* node_modules in Resources */,
+				BAD9F12A24D80C8200983BDB /* LDBServerNode in Resources */,
+				BAD9F12724D80C1800983BDB /* constant.js in Resources */,
+				BAD9F12524D80C1800983BDB /* error in Resources */,
+				BAD9F12024D80C1800983BDB /* package-lock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +604,7 @@
 				CODE_SIGN_ENTITLEMENTS = "notion-account-switcher/notion_account_switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = T7Q559P978;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "notion-account-switcher/Info.plist";
@@ -593,6 +613,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = io.sanghun.notion.account.switcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "notion-account-switcher-Bridging-Header.h";
@@ -614,6 +635,7 @@
 				CODE_SIGN_ENTITLEMENTS = "notion-account-switcher/notion_account_switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = T7Q559P978;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "notion-account-switcher/Info.plist";
@@ -622,6 +644,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = io.sanghun.notion.account.switcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "notion-account-switcher-Bridging-Header.h";
@@ -640,6 +663,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = T7Q559P978;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = NotionAccountSwitcherLDBServer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -666,6 +690,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = T7Q559P978;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = NotionAccountSwitcherLDBServer/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				LD_RUNPATH_SEARCH_PATHS = (
