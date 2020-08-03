@@ -131,16 +131,15 @@ class PackageManager: NSObject {
         }
     }
     
-    class final func clearNotionApplicationData() {
-        if let notion = getNotion_NSRunningApplication().first {
-            notion.forceTerminate()
+    class final func clearNotionApplicationData(completionHandler: @escaping () -> Void) {
+        let killallProcess = Process()
+        killallProcess.launchPath = "/usr/bin/killall"
+        killallProcess.arguments = ["Notion"]
+        killallProcess.terminationHandler = { process in
+            try? fileManager.removeItem(atPath: notionDataPath)
+            completionHandler()
         }
-        
-        repeat {
-            Thread.sleep(forTimeInterval: 1.0)
-        } while (getNotion_NSRunningApplication().first != nil)
-        
-        try? fileManager.removeItem(atPath: notionDataPath)
+        killallProcess.launch()
     }
     
     class final func setAddMode(_ isAddMode: Bool) {

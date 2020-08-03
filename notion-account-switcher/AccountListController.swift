@@ -127,11 +127,14 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
     
     @IBAction func addAccountAction(_ sender: Any) {
-        PackageManager.clearNotionApplicationData()
-        PackageManager.setAddMode(true)
-        
-        if let loadingController = storyboard?.instantiateController(withIdentifier: "LoadingController") as? LoadingController {
-            self.present(loadingController, animator: ReplacePresentationAnimator())
+        PackageManager.clearNotionApplicationData {
+            PackageManager.setAddMode(true)
+            
+            DispatchQueue.main.async {
+                if let loadingController = self.storyboard?.instantiateController(withIdentifier: "LoadingController") as? LoadingController {
+                    self.present(loadingController, animator: ReplacePresentationAnimator())
+                }
+            }
         }
     }
     
@@ -188,10 +191,12 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
                 PackageManager.removeUserData(email: notionUserInfo.email, userId: notionUserInfo.userId.replacingOccurrences(of: "-", with: ""))
                 
                 if isCurrentUser {
-                    PackageManager.clearNotionApplicationData()
+                    PackageManager.clearNotionApplicationData {
+                        self.load()
+                    }
+                } else {
+                    self.load()
                 }
-                
-                self.load()
             }
         }
     }
@@ -208,13 +213,14 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
                 self.loadingIndicator.stopAnimation(nil)
             }
         } else {
-            PackageManager.clearNotionApplicationData()
-            PackageManager.applyNotionData(userId: self.notionDatas[idx].userId.replacingOccurrences(of: "-", with: ""), email: self.notionDatas[idx].email) {
-                NSWorkspace.shared.launchApplication("Notion")
+            PackageManager.clearNotionApplicationData {
+                PackageManager.applyNotionData(userId: self.notionDatas[idx].userId.replacingOccurrences(of: "-", with: ""), email: self.notionDatas[idx].email) {
+                    NSWorkspace.shared.launchApplication("Notion")
 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    self.loadingIndicator.stopAnimation(nil)
-                    self.load()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        self.loadingIndicator.stopAnimation(nil)
+                        self.load()
+                    }
                 }
             }
         }
