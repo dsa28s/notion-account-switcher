@@ -80,24 +80,28 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
                 permissionRequestView.add(toView: self.view)
                 permissionRequestView.delegate = self
             } else {
-                if PackageManager.getSavedNotionDatas().count > 0 {
-                    self.checkNotionDataExist { isLoggedIn, userInfo in
-                        if isLoggedIn {
-                            if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
-                                self.showAccountList()
-                            }
-                        } else {
-                            self.showAccountList()
-                        }
-                    }
+                if PackageManager.isAddMode() {
+                    self.showNotionLoginInformation()
                 } else {
-                    self.checkNotionDataExist { isLoggedIn, userInfo in
-                        if isLoggedIn {
-                            if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
+                    if PackageManager.getSavedNotionDatas().count > 0 {
+                        self.checkNotionDataExist { isLoggedIn, userInfo in
+                            if isLoggedIn {
+                                if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
+                                    self.showAccountList()
+                                }
+                            } else {
                                 self.showAccountList()
                             }
-                        } else {
-                            self.showNotionLoginInformation()
+                        }
+                    } else {
+                        self.checkNotionDataExist { isLoggedIn, userInfo in
+                            if isLoggedIn {
+                                if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
+                                    self.showAccountList()
+                                }
+                            } else {
+                                self.showNotionLoginInformation()
+                            }
                         }
                     }
                 }
