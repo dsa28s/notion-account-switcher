@@ -8,14 +8,19 @@
 import Foundation
 import Cocoa
 
-class NASWindowController: NSWindowController {
+class NASWindowController: NSWindowController, NSWindowDelegate {
     override func windowDidLoad() {
         window?.isMovableByWindowBackground = true
         window?.titlebarAppearsTransparent = true
         window?.center()
         window?.styleMask.remove(NSWindow.StyleMask.resizable)
         window?.level = .floating
+        window?.delegate = self
         
         NSApplication.shared.activate(ignoringOtherApps: true)
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        NSApplication.shared.setActivationPolicy(.prohibited)
     }
 }
