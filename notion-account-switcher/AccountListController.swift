@@ -301,6 +301,8 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
             if isNotionFocused {
                 isNotionFocused = false
                 NSTouchBarItem.removeSystemTrayItem(self.stripTouchBarItem!)
+                DFRElementSetControlStripPresenceForIdentifier(self.touchBarControlStrip, true)
+                
                 self.stripTouchBarItem = nil
                 self.stripTouchBar = nil
             }
