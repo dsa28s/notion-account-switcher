@@ -46,7 +46,7 @@ If notion app focused, touch bar is activated and you can change your account vi
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/dsa28s/notion-account-switcher/master/Resources/touchbar_screenshot.gif" width="100%">
+  <img src="https://raw.githubusercontent.com/dsa28s/notion-account-switcher/master/Resources/touchbar_demo.gif" width="100%">
 </p>
 
 <br>
