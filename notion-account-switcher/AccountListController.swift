@@ -8,7 +8,7 @@
 import Foundation
 import Cocoa
 
-class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, AccountListCellDelegate {
+class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, NSTouchBarDelegate, AccountListCellDelegate {
     @IBOutlet weak var titleLabel: NSTextField!
     @IBOutlet weak var accountTable: NSTableView!
     @IBOutlet weak var addAccountButton: NSButton!
@@ -54,6 +54,37 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         
         load()
     }
+    
+    override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = NSTouchBar()
+        touchBar.delegate = self
+        
+        var identifiers: [NSTouchBarItem.Identifier] = []
+        self.notionDatas.forEach {
+            identifiers.append(NSTouchBarItem.Identifier("touchBar_\($0.userId.replacingOccurrences(of: "-", with: ""))"))
+        }
+        touchBar.defaultItemIdentifiers = identifiers
+        return touchBar
+    }
+    
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
+        let touchbarUserId = identifier.rawValue.split(separator: "_")[1]
+        let notionUserInfo = self.notionDatas.filter({ (value: NotionUserInfo) -> Bool in return (value.userId.replacingOccurrences(of: "-", with: "") == touchbarUserId) }).first
+        
+        let notionData = notionUserInfo
+        let customViewItem = NSCustomTouchBarItem(identifier: identifier)
+        let button = NSButton(title: notionData?.email ?? "", target: self, action: nil)
+        let favicon = cachedFavicons[notionData?.email ?? ""]
+        favicon?.size = NSSize(width: 24.0, height: 24.0)
+        button.image = favicon
+        button.imagePosition = .imageLeft
+        
+        button.action = #selector(self.touchBarButtonClicked(sender:))
+        
+        customViewItem.view = button
+        
+        return customViewItem
+    }
 
     private func load() {
         currentLoggedInUserIdx = -1
@@ -70,12 +101,14 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
             self.loadFavicons(email: item.email) { image in
                 self.cachedFavicons[item.email] = image
                 self.accountTable.reloadData()
+                self.touchBar = nil
             }
         }
         
         LDBServer.shared.getCurrentLoggedInUser { user in
             self.currentLoggedInUser = user
             self.accountTable.reloadData()
+            self.touchBar = nil
         }
     }
     
@@ -202,11 +235,14 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
     
     @objc func tableDoubleClicked(sender: NSTableView) {
+        let idx = sender.clickedRow
+        openNotion(notionUserInfo: notionDatas[idx])
+    }
+    
+    func openNotion(notionUserInfo: NotionUserInfo) {
         self.loadingIndicator.startAnimation(nil)
         
-        let idx = sender.clickedRow
-        
-        if idx == currentLoggedInUserIdx {
+        if currentLoggedInUser?.email == notionUserInfo.email {
             NSWorkspace.shared.launchApplication("Notion")
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -214,7 +250,7 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
             }
         } else {
             PackageManager.clearNotionApplicationData {
-                PackageManager.applyNotionData(userId: self.notionDatas[idx].userId.replacingOccurrences(of: "-", with: ""), email: self.notionDatas[idx].email) {
+                PackageManager.applyNotionData(userId: notionUserInfo.userId.replacingOccurrences(of: "-", with: ""), email: notionUserInfo.email) {
                     NSWorkspace.shared.launchApplication("Notion")
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
@@ -223,6 +259,14 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
                     }
                 }
             }
+        }
+    }
+    
+    @objc func touchBarButtonClicked(sender: NSButton) {
+        let email = sender.title
+        
+        if let userInfo = notionDatas.filter({ (value: NotionUserInfo) -> Bool in return (value.email == email) }).first {
+            self.openNotion(notionUserInfo: userInfo)
         }
     }
 }
