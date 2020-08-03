@@ -275,9 +275,9 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
     
     @objc func touchBarButtonClicked(sender: NSButton) {
-        let email = sender.title
+        let email = sender.title.replacingOccurrences(of: "...", with: "")
         
-        if let userInfo = notionDatas.filter({ (value: NotionUserInfo) -> Bool in return (value.email == email) }).first {
+        if let userInfo = notionDatas.filter({ (value: NotionUserInfo) -> Bool in return (value.email.starts(with: email)) }).first {
             self.openNotion(notionUserInfo: userInfo)
         }
     }
