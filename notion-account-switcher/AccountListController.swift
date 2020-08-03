@@ -98,8 +98,10 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         notionDatas = PackageManager.getSavedNotionDatas()
         
         if notionDatas.count == 0 {
-            if let loadingController = storyboard?.instantiateController(withIdentifier: "LoadingController") as? LoadingController {
-                self.present(loadingController, animator: ReplacePresentationAnimator())
+            DispatchQueue.main.async {
+                if let loadingController = self.storyboard?.instantiateController(withIdentifier: "LoadingController") as? LoadingController {
+                    self.present(loadingController, animator: ReplacePresentationAnimator())
+                }
             }
         }
         
