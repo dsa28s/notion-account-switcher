@@ -2,6 +2,31 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>io.sanghun.notion.account.switcher.ext.userdata</string>
+			</array>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>Binary</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>nasud</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Notion Account Switcher User Data</string>
+			<key>LSHandlerRank</key>
+			<string>Owner</string>
+		</dict>
+	</array>
+	<key>CFBundleDisplayName</key>
+	<string>Notion Account Switcher</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
