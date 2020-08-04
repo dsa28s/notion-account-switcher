@@ -1,1 +1,12 @@
-<EMPTY>
+<item>
+    <title>Version 0.10 (for macOS)</title>
+    <sparkle:releaseNotesLink>
+        https://example.com/release_notes/app_2.0.html
+    </sparkle:releaseNotesLink>
+    <pubDate>Wed, 05 Aug 2020 02:24:43 +0900</pubDate>
+    <enclosure url="https://example.com/downloads/app.zip.or.dmg.or.tar.etc"
+               sparkle:version="0.10"
+               sparkle:edSignature="lW6UVmIS02H+Q2GQxblCzhF8iKtThJoTYcmu29VHh7F+yhf+Jf4Mq+1BVw7cHYK6GtJuRbm/2nj3skherbW9Cw=="
+               length="26976218"
+               type="application/octet-stream" />
+</item>
