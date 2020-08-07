@@ -24,7 +24,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
     "@ekino/logger": "^1.0.0",
     "encoding-down": "^6.3.0",
