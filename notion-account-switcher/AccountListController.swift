@@ -168,7 +168,7 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         }
 
         self.accountTable.reloadData()
-    }notion-account-switcher/AccountListController.swift 
+    }
     
     @IBAction func addAccountAction(_ sender: Any) {
         PackageManager.clearNotionApplicationData {
