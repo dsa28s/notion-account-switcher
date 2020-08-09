@@ -37,8 +37,8 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         
         loadingIndicator.controlSize = .regular
         
-        addAccountButton.changeLabel(localizedStringKey: "AddAccount")
-        removeAccountButton.changeLabel(localizedStringKey: "RemoveAccount")
+        addAccountButton.title = NSLocalizedString("AddAccount", comment: "")
+        removeAccountButton.title = NSLocalizedString("RemoveAccount", comment: "")
         
         accountTable.tableColumns.forEach {
             accountTable.removeTableColumn($0)
@@ -160,15 +160,15 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         if !self.isEditMode {
             self.isEditMode = true
             self.addAccountButton.isEnabled = false
-            self.removeAccountButton.changeLabel(localizedStringKey: "Done")
+            self.removeAccountButton.title = NSLocalizedString("Done", comment: "")
         } else {
             self.isEditMode = false
             self.addAccountButton.isEnabled = true
-            self.removeAccountButton.changeLabel(localizedStringKey: "RemoveAccount")
+            self.removeAccountButton.title = NSLocalizedString("RemoveAccount", comment: "")
         }
 
         self.accountTable.reloadData()
-    }
+    }notion-account-switcher/AccountListController.swift 
     
     @IBAction func addAccountAction(_ sender: Any) {
         PackageManager.clearNotionApplicationData {

@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="AccountListCell" customModule="notion_account_switcher" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="AccountListCell" customModule="Notion_Account_Switcher" customModuleProvider="target">
             <connections>
                 <outlet property="emailLabel" destination="ICt-KL-9EU" id="iPe-5s-Lia"/>
                 <outlet property="faviconImage" destination="Byk-av-chE" id="sOH-aL-oEq"/>

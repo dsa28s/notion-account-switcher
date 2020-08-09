@@ -8,11 +8,13 @@
 import Foundation
 import Cocoa
 
-extension NSButton {
-    func changeLabel(localizedStringKey: String) {
-        let pstyle = NSMutableParagraphStyle()
-        pstyle.alignment = .center
-        
-        self.attributedTitle = NSAttributedString(string: NSLocalizedString(localizedStringKey, comment: ""), attributes: [ NSAttributedString.Key.foregroundColor : NSColor.white, NSAttributedString.Key.paragraphStyle : pstyle ])
-    }
-}
+//extension NSButton {
+//    func changeLabel(localizedStringKey: String) {
+//        let pstyle = NSMutableParagraphStyle()
+//        pstyle.alignment = .center
+//
+//        self.title = ""
+//
+//        self.attributedTitle = NSAttributedString(string: NSLocalizedString(localizedStringKey, comment: ""), attributes: [ NSAttributedString.Key.foregroundColor : NSColor.white, NSAttributedString.Key.paragraphStyle : pstyle ])
+//    }
+//}
