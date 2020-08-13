@@ -24,6 +24,8 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     private var stripTouchBarItem: NSCustomTouchBarItem?
     private var stripTouchBar: NSTouchBar?
     
+    private var statusBarItem: NSStatusItem?
+    
     private var isEditMode = false
     private var isNotionFocused = false
     
@@ -296,6 +298,8 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
                 self.stripTouchBar = makeTouchBar()
                 
                 DFRElementSetControlStripPresenceForIdentifier(self.touchBarControlStrip, true)
+                
+                self.presentAccountListAtSystemBar()
             }
         } else {
             if isNotionFocused {
@@ -305,11 +309,57 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
                 
                 self.stripTouchBarItem = nil
                 self.stripTouchBar = nil
+                
+                self.removeAccountListAtSystemBar()
             }
         }
     }
     
     @objc func presentTouchBar() {
         presentSystemModal(self.stripTouchBar, systemTrayItemIdentifier: self.touchBarControlStrip)
+    }
+    
+    func presentAccountListAtSystemBar() {
+        let systemBar = NSStatusBar.system
+        statusBarItem = systemBar.statusItem(withLength: NSStatusItem.squareLength)
+        statusBarItem?.image = NSImage(named: "Notion")
+        
+        let title = NSLocalizedString("SwitchNotionAccount", comment: "")
+        
+        let statusBarMenu = NSMenu(title: title)
+        statusBarItem?.menu = statusBarMenu
+        
+        statusBarMenu.addItem(
+            withTitle: title,
+            action: nil,
+            keyEquivalent: "")
+        
+        statusBarMenu.addItem(NSMenuItem.separator())
+        
+        self.notionDatas.forEach {
+            let item = statusBarMenu.addItem(
+                withTitle: $0.email,
+                action: #selector(self.clickAccountCellFromSystemBar(_:)),
+                keyEquivalent: "")
+            item.target = self
+        }
+    }
+    
+    func removeAccountListAtSystemBar() {
+        let systemBar = NSStatusBar.system
+        
+        guard let statusItem = self.statusBarItem else {
+            return
+        }
+        
+        systemBar.removeStatusItem(statusItem)
+    }
+    
+    @objc func clickAccountCellFromSystemBar(_ sender: NSMenuItem) {
+        guard let notionUserInfo = self.notionDatas.filter({ (value: NotionUserInfo) -> Bool in return (value.email == sender.title) }).first else {
+            return
+        }
+        
+        self.openNotion(notionUserInfo: notionUserInfo)
     }
 }
