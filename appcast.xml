@@ -1,12 +1,12 @@
 <item>
-    <title>Version 0.10 (for macOS)</title>
+    <title>Version 0.11 (for macOS)</title>
     <sparkle:releaseNotesLink>
         https://refined-github-html-preview.kidonng.workers.dev/dsa28s/notion-account-switcher/raw/master/update_log.html
     </sparkle:releaseNotesLink>
-    <pubDate>Wed, 05 Aug 2020 02:24:43 +0900</pubDate>
-    <enclosure url="https://github.com/dsa28s/notion-account-switcher/releases/download/v0.10/NotionAccountSwitcher_v0.10.zip"
-               sparkle:version="0.10"
-               sparkle:edSignature="lW6UVmIS02H+Q2GQxblCzhF8iKtThJoTYcmu29VHh7F+yhf+Jf4Mq+1BVw7cHYK6GtJuRbm/2nj3skherbW9Cw=="
-               length="26976218"
+    <pubDate>Fri, 14 Aug 2020 01:25:40 +0900</pubDate>
+    <enclosure url="https://github.com/dsa28s/notion-account-switcher/releases/download/v0.11/NotionAccountSwitcher_v0.11.zip"
+               sparkle:version="0.11"
+               sparkle:edSignature="hqfx0s4ksH796PVVF7aizThTYAA6tF4QZKNkgmodABnTuyLcSctdicyqXBvRTS42xu70LTzasLqtfmbyRtwEBA=="
+               length="26945413"
                type="application/octet-stream" />
 </item>
