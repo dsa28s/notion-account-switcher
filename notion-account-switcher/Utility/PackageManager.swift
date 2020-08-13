@@ -7,7 +7,6 @@
 
 import Foundation
 import AppKit
-import tarkit
 
 class PackageManager: NSObject {
     private class var fileManager: FileManager {
@@ -66,7 +65,7 @@ class PackageManager: NSObject {
         return runningNotionApps.first?.isActive ?? false
     }
     
-    class final func archiveNotionAppData(userId: String, email: String) -> Bool {
+    class final func archiveNotionAppData(userId: String, email: String, completionHandler: @escaping (Bool) -> Void) {
         try? fileManager.createDirectory(at: URL(fileURLWithPath: notionDataSavePath), withIntermediateDirectories: true, attributes: nil)
         
         let archivePath = "\(notionDataSavePath)/\(email)_\(userId.replacingOccurrences(of: "-", with: ""))"
@@ -79,20 +78,38 @@ class PackageManager: NSObject {
                 try fileManager.removeItem(atPath: "\(archivePath).tar")
             }
             
-            try DCTar.compressFile(atPath: notionDataPath, toPath: "\(archivePath).tar")
-            
-            var fileData = try Data(contentsOf: URL(fileURLWithPath: "\(archivePath).tar"))
-            for (index, element) in nasudMagicHeader.enumerated() {
-                fileData.insert(element, at: index)
+            let archiveTarProcess = Process()
+            archiveTarProcess.launchPath = "/usr/bin/tar"
+            archiveTarProcess.arguments = ["-cvf", "\(archivePath).tar", "-C", notionDataPath, "."]
+            archiveTarProcess.terminationHandler = { process in
+                do {
+                    var fileData = try Data(contentsOf: URL(fileURLWithPath: "\(archivePath).tar"))
+                    for (index, element) in nasudMagicHeader.enumerated() {
+                        fileData.insert(element, at: index)
+                    }
+                    
+                    try fileData.write(to: URL(fileURLWithPath: "\(archivePath).nasud"))
+                    try fileManager.removeItem(atPath: "\(archivePath).tar")
+                    
+                    DispatchQueue.main.async {
+                        completionHandler(true)
+                    }
+                } catch {
+                    print(error)
+                    
+                    DispatchQueue.main.async {
+                        completionHandler(false)
+                    }
+                }
             }
             
-            try fileData.write(to: URL(fileURLWithPath: "\(archivePath).nasud"))
-            try fileManager.removeItem(atPath: "\(archivePath).tar")
-            
-            return true
+            archiveTarProcess.launch()
         } catch {
             print(error)
-            return false
+            
+            DispatchQueue.main.async {
+                completionHandler(false)
+            }
         }
     }
     

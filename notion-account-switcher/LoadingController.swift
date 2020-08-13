@@ -46,77 +46,59 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
     private func checkFullDiskAccessAndRequestPermission() {
         let permissionStatus = PermissionsKit.authorizationStatus(for: .fullDiskAccess)
         
-        #if DEBUG
-            if PackageManager.isAddMode() {
-                self.showNotionLoginInformation()
-            } else {
-                if PackageManager.getSavedNotionDatas().count > 0 {
-                    self.checkNotionDataExist { isLoggedIn, userInfo in
-                        if isLoggedIn {
-                            if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
+        #if !DEBUG
+        if permissionStatus != .authorized {
+            self.progressIndicator.stopAnimation(nil)
+            
+            let permissionRequestView = PermissionRequestView()
+            permissionRequestView.add(toView: self.view)
+            permissionRequestView.delegate = self
+            
+            NSApplication.shared.setActivationPolicy(.regular)
+            NSApplication.shared.mainWindow?.level = .normal
+            
+            return
+        }
+        #endif
+        
+        if PackageManager.isAddMode() {
+            self.showNotionLoginInformation()
+        } else {
+            if PackageManager.getSavedNotionDatas().count > 0 {
+                self.checkNotionDataExist { isLoggedIn, userInfo in
+                    if isLoggedIn {
+                        PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) { isSuccess in
+                            if isSuccess {
                                 self.showAccountList()
-                            }
-                        } else {
-                            self.showAccountList()
-                        }
-                    }
-                } else {
-                    self.checkNotionDataExist { isLoggedIn, userInfo in
-                        if isLoggedIn {
-                            if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
-                                self.showAccountList()
-                            }
-                        } else {
-                            self.showNotionLoginInformation()
-                        }
-                    }
-                }
-            }
-        #else
-            if permissionStatus != .authorized {
-                self.progressIndicator.stopAnimation(nil)
-                
-                let permissionRequestView = PermissionRequestView()
-                permissionRequestView.add(toView: self.view)
-                permissionRequestView.delegate = self
-            } else {
-                if PackageManager.isAddMode() {
-                    self.showNotionLoginInformation()
-                } else {
-                    if PackageManager.getSavedNotionDatas().count > 0 {
-                        self.checkNotionDataExist { isLoggedIn, userInfo in
-                            if isLoggedIn {
-                                if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
-                                    self.showAccountList()
-                                }
                             } else {
-                                self.showAccountList()
+                                self.showErrorApplyNotionAppDataFailed()
                             }
                         }
                     } else {
-                        self.checkNotionDataExist { isLoggedIn, userInfo in
-                            if isLoggedIn {
-                                if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
-                                    self.showAccountList()
-                                }
+                        self.showAccountList()
+                    }
+                }
+            } else {
+                self.checkNotionDataExist { isLoggedIn, userInfo in
+                    if isLoggedIn {
+                        PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) { isSuccess in
+                            if isSuccess {
+                                self.showAccountList()
                             } else {
-                                self.showNotionLoginInformation()
+                                self.showErrorApplyNotionAppDataFailed()
                             }
                         }
+                    } else {
+                        self.showNotionLoginInformation()
                     }
                 }
             }
-        #endif
+        }
     }
     
     private func checkNotionDataExist(resultHandler: @escaping (Bool, NotionUserInfo?) -> Void) {
         if !LDBServer.shared.isRunning {
-            showAlertSheet(alertStyle: .critical,
-                           titleLocalizationKey: "ServerNotRunningTitle",
-                           descriptionLocalizationKey: "ServerNotRunningDescription",
-                           buttonLocalizationKeys: ["OK"]) { response in
-                NSApp.terminate(nil)
-            }
+            self.showErrorServerLoadFailed()
         } else {
             LDBServer.shared.getCurrentLoggedInUser { userInfo in
                 if let userInfo = userInfo {
@@ -154,8 +136,13 @@ class LoadingController: NSViewController, PermissionRequestDelegate {
                     self.checkDataTimer?.invalidate()
                     
                     self.postNotificationCenter(titleLocalizationKey: "LoginSuccessNotificationTitle", description: "\(NSLocalizedString("LoggedIn", comment: "")) : \(userInfo!.email)")
-                    if PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) {
-                        self.showAccountList()
+                    
+                    PackageManager.archiveNotionAppData(userId: userInfo!.userId, email: userInfo!.email) { isSuccess in
+                        if isSuccess {
+                            self.showAccountList()
+                        } else {
+                            self.showErrorApplyNotionAppDataFailed()
+                        }
                     }
                 }
             }

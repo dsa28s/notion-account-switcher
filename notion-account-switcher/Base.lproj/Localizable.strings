@@ -16,7 +16,9 @@
 "DiskUtilPermissionDescription" = "App requires a Notion app data file.\nmacOS Full Disk Access permission is required to access data file.";
 
 "ServerNotRunningTitle" = "Some components not loaded.";
-"ServerNotRunningDescription" = "If the problem persists after re-running the app, please submit the problem with Github issue.";
+"RegisterGithubIssuePleaseDescription" = "If the problem persists after re-running the app, please submit the problem with Github issue.";
+
+"NotionAppDataArchiveErrorTitle" = "Applying account to notion app failed.";
 
 "OpeningNotionTitle" = "Launching Notion App...";
 "PleaseNotionLoginTitle" = "Login from Notion App";

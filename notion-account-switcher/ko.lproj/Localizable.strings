@@ -16,7 +16,9 @@
 "DiskUtilPermissionDescription" = "노션 데이터 파일에 접근해야 합니다. macOS 정책에 따라,\n다른 앱 데이터를 접근하기 위해서는 '전체 디스크 접근' 권한을 허용해야 합니다.";
 
 "ServerNotRunningTitle" = "앱의 일부 구성요소가 로드되지 않았습니다.";
-"ServerNotRunningDescription" = "앱을 재실행 한 후에도 문제가 계속 된다면 Github 이슈로 문제상황을 등록해주세요.";
+"RegisterGithubIssuePleaseDescription" = "앱을 재실행 한 후에도 문제가 계속 된다면 Github 이슈로 문제상황을 등록해주세요.";
+
+"NotionAppDataArchiveErrorTitle" = "Notion 앱에 계정 정보를 적용하지 못했습니다.";
 
 "OpeningNotionTitle" = "Notion 앱을 실행하는 중...";
 "PleaseNotionLoginTitle" = "Notion 앱에서 로그인";
