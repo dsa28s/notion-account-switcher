@@ -2,7 +2,7 @@
 //
 // Project : Notion Account Switcher for macOS
 // File Name : View Controllers/AccountListController.swift
-// Description : Acclout List Controller
+// Description : Account List Controller
 // Author: Dora Lee <lee@sanghun.io>
 
 import Foundation

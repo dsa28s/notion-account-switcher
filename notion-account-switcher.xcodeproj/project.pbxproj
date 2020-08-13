@@ -22,7 +22,6 @@
 		BA311FD824D7059500B348BC /* ReplacePresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA311FD724D7059500B348BC /* ReplacePresentationAnimator.swift */; };
 		BA311FDA24D70C4200B348BC /* AccountListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA311FD924D70C4200B348BC /* AccountListCell.xib */; };
 		BA311FDC24D710F000B348BC /* AccountListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA311FDB24D710F000B348BC /* AccountListCell.swift */; };
-		BA311FDE24D7270D00B348BC /* NSButton+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA311FDD24D7270D00B348BC /* NSButton+Label.swift */; };
 		BA4CB3F424D32175002D4E13 /* PermissionRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA4CB3F324D32175002D4E13 /* PermissionRequestView.xib */; };
 		BA4CB3F624D32196002D4E13 /* PermissionRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4CB3F524D32196002D4E13 /* PermissionRequestView.swift */; };
 		BA4CB3F824D3286A002D4E13 /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4CB3F724D3286A002D4E13 /* Nib.swift */; };
@@ -71,7 +70,6 @@
 		BA311FD724D7059500B348BC /* ReplacePresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacePresentationAnimator.swift; sourceTree = "<group>"; };
 		BA311FD924D70C4200B348BC /* AccountListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountListCell.xib; sourceTree = "<group>"; };
 		BA311FDB24D710F000B348BC /* AccountListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListCell.swift; sourceTree = "<group>"; };
-		BA311FDD24D7270D00B348BC /* NSButton+Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Label.swift"; sourceTree = "<group>"; };
 		BA4CB3F324D32175002D4E13 /* PermissionRequestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PermissionRequestView.xib; sourceTree = "<group>"; };
 		BA4CB3F524D32196002D4E13 /* PermissionRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionRequestView.swift; sourceTree = "<group>"; };
 		BA4CB3F724D3286A002D4E13 /* Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				BA286B4324D5BD01003C7B06 /* NSViewController+Alert.swift */,
-				BA311FDD24D7270D00B348BC /* NSButton+Label.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -349,7 +346,6 @@
 				BA2F03CE24C9E24C005153E4 /* NASWindowController.swift in Sources */,
 				BA286B4D24D5CE81003C7B06 /* NotionUserInfo.swift in Sources */,
 				BA286B4A24D5CA4B003C7B06 /* LoginNotionLoadingView.swift in Sources */,
-				BA311FDE24D7270D00B348BC /* NSButton+Label.swift in Sources */,
 				BA4CB3F824D3286A002D4E13 /* Nib.swift in Sources */,
 				BAB219CA24D1D50E00174358 /* LDBServer.swift in Sources */,
 				BAD9F11224D7E82400983BDB /* SupportNSTouchBar.swift in Sources */,
