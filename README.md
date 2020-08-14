@@ -25,6 +25,7 @@
 
 - Multiple account save & Apply to notion app.
 - Touchbar support (At notion app focused)
+- Menu bar support (At notion app focused)
 
 <br>
 
@@ -34,6 +35,16 @@
 - Korean
 
 Translation PR always welcome 😆😆
+
+<br>
+
+## Menu Bar Support
+
+If notion app focused, menu bar icon is activated and you can change your account via the menu bar.
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/dsa28s/notion-account-switcher/master/Resources/menu_bar_screenshot.png" width="100%">
+</p>
 
 <br>
 
