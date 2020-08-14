@@ -15,6 +15,8 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     @IBOutlet weak var removeAccountButton: NSButton!
     @IBOutlet weak var loadingIndicator: NSProgressIndicator!
     
+    private var timers: Timer? = nil
+    
     private var notionDatas: [NotionUserInfo] = []
     private var currentLoggedInUser: NotionUserInfo?
     private var currentLoggedInUserIdx = -1
@@ -60,7 +62,8 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         super.viewDidAppear()
         
         load()
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+        
+        self.timers = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
             self.setupControlStripPresence()
         }
     }
@@ -103,6 +106,7 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
             if self.notionDatas.count == 0 {
                 DispatchQueue.main.async {
                     if let loadingController = self.storyboard?.instantiateController(withIdentifier: "LoadingController") as? LoadingController {
+                        self.timers?.invalidate()
                         self.present(loadingController, animator: ReplacePresentationAnimator())
                     }
                 }
@@ -178,6 +182,7 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
             
             DispatchQueue.main.async {
                 if let loadingController = self.storyboard?.instantiateController(withIdentifier: "LoadingController") as? LoadingController {
+                    self.timers?.invalidate()
                     self.present(loadingController, animator: ReplacePresentationAnimator())
                 }
             }
@@ -320,28 +325,30 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
     }
     
     func presentAccountListAtSystemBar() {
-        let systemBar = NSStatusBar.system
-        statusBarItem = systemBar.statusItem(withLength: NSStatusItem.squareLength)
-        statusBarItem?.image = NSImage(named: "Notion")
-        
-        let title = NSLocalizedString("SwitchNotionAccount", comment: "")
-        
-        let statusBarMenu = NSMenu(title: title)
-        statusBarItem?.menu = statusBarMenu
-        
-        statusBarMenu.addItem(
-            withTitle: title,
-            action: nil,
-            keyEquivalent: "")
-        
-        statusBarMenu.addItem(NSMenuItem.separator())
-        
-        self.notionDatas.forEach {
-            let item = statusBarMenu.addItem(
-                withTitle: $0.email,
-                action: #selector(self.clickAccountCellFromSystemBar(_:)),
+        if !PackageManager.isAddMode() && self.statusBarItem == nil {
+            let systemBar = NSStatusBar.system
+            statusBarItem = systemBar.statusItem(withLength: NSStatusItem.squareLength)
+            statusBarItem?.image = NSImage(named: "Notion")
+            
+            let title = NSLocalizedString("SwitchNotionAccount", comment: "")
+            
+            let statusBarMenu = NSMenu(title: title)
+            statusBarItem?.menu = statusBarMenu
+            
+            statusBarMenu.addItem(
+                withTitle: title,
+                action: nil,
                 keyEquivalent: "")
-            item.target = self
+            
+            statusBarMenu.addItem(NSMenuItem.separator())
+            
+            self.notionDatas.forEach {
+                let item = statusBarMenu.addItem(
+                    withTitle: $0.email,
+                    action: #selector(self.clickAccountCellFromSystemBar(_:)),
+                    keyEquivalent: "")
+                item.target = self
+            }
         }
     }
     
@@ -353,6 +360,7 @@ class AccountListController: NSViewController, NSTableViewDelegate, NSTableViewD
         }
         
         systemBar.removeStatusItem(statusItem)
+        self.statusBarItem = nil
     }
     
     @objc func clickAccountCellFromSystemBar(_ sender: NSMenuItem) {
