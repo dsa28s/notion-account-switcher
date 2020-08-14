@@ -6,14 +6,13 @@
 // Author: Dora Lee <lee@sanghun.io>
 
 import Cocoa
-import ServiceManagement
 import Sparkle
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         NSObject.startUpLogin()
-        SUUpdater.init().automaticallyChecksForUpdates = true
+        SUUpdater.shared()?.automaticallyChecksForUpdates = true
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -36,6 +35,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DispatchQueue.main.async {
             loadingController.showWindow(self)
         }
+    }
+    
+    @IBAction func checkUpdateButtonClicked(_ menu: NSMenu) {
+        SUUpdater.shared()?.checkForUpdates(self)
     }
 }
 

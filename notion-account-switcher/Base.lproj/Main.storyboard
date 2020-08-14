@@ -22,6 +22,13 @@
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="K4t-5L-NFm"/>
+                                        <menuItem title="Check for Updates..." id="rEL-Xj-FPG">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="checkUpdateButtonClicked:" target="Ady-hI-5gd" id="Hlx-zi-agO"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -31,16 +38,17 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="notion_account_switcher" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Notion_Account_Switcher" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <customObject id="OGq-Xx-SoI" customClass="SUUpdater"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="52" y="-6"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController storyboardIdentifier="MainWindowController" id="B8D-0N-5wS" customClass="NASWindowController" customModule="notion_account_switcher" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="MainWindowController" id="B8D-0N-5wS" customClass="NASWindowController" customModule="Notion_Account_Switcher" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Notion Account Switcher" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -61,7 +69,7 @@
         <!--Loading Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController storyboardIdentifier="LoadingController" id="XfG-lQ-9wD" customClass="LoadingController" customModule="notion_account_switcher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoadingController" id="XfG-lQ-9wD" customClass="LoadingController" customModule="Notion_Account_Switcher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl" customClass="NSVisualEffectView">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -87,7 +95,7 @@
         <!--Account List Controller-->
         <scene sceneID="tSU-i2-NGo">
             <objects>
-                <viewController storyboardIdentifier="AccountListController" showSeguePresentationStyle="single" id="c2O-Ci-O5o" customClass="AccountListController" customModule="notion_account_switcher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountListController" showSeguePresentationStyle="single" id="c2O-Ci-O5o" customClass="AccountListController" customModule="Notion_Account_Switcher" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Olz-xr-ykV" customClass="NSVisualEffectView">
                         <rect key="frame" x="0.0" y="0.0" width="479" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>

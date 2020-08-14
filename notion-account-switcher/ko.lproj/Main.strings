@@ -9,7 +9,9 @@
 "5QF-Oa-p0T.title" = "Edit";
 
 /* Class = "NSMenuItem"; title = "About Notion Account Switcher"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "About Notion Account Switcher";
+"5kV-Vb-QxS.title" = "Notion Account Switcher 정보";
+
+"rEL-Xj-FPG.title" = "업데이트 확인...";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "Main Menu";
