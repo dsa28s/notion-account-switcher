@@ -1,6 +1,6 @@
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
     <channel>
-    <title>Notion Account Switcher ChangeLog</title>
+    <title>ChangeLog</title>
     <link>https://raw.githubusercontent.com/dsa28s/notion-account-switcher/master/appcast.xml</link>
     <description>Most recent changes with links to updates.</description>
     <language>en</language>
@@ -12,8 +12,8 @@
         <pubDate>Fri, 14 Aug 2020 01:25:40 +0900</pubDate>
         <enclosure url="https://github.com/dsa28s/notion-account-switcher/releases/download/v0.11/NotionAccountSwitcher_v0.11.zip"
                 sparkle:version="0.11"
-                sparkle:edSignature="hqfx0s4ksH796PVVF7aizThTYAA6tF4QZKNkgmodABnTuyLcSctdicyqXBvRTS42xu70LTzasLqtfmbyRtwEBA=="
-                length="26945413"
+                sparkle:edSignature="jDCV6hSYa+LMcwOCUGzKziW7/JMvWDGZXcsXwWGjo9W9OGI7Xw82eyEzNc5pYrJG7OCxHzzxJD0MjfUZo4VGAg=="
+                length="26945988"
                 type="application/octet-stream" />
     </item>
     </channel>
