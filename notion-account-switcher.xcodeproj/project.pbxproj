@@ -512,7 +512,7 @@
 				CODE_SIGN_ENTITLEMENTS = "notion-account-switcher/notion_account_switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.10;
+				CURRENT_PROJECT_VERSION = 0.11;
 				DEVELOPMENT_TEAM = T7Q559P978;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "notion-account-switcher/Info.plist";
@@ -521,7 +521,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.10;
+				MARKETING_VERSION = 0.11;
 				PRODUCT_BUNDLE_IDENTIFIER = io.sanghun.notion.account.switcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "notion-account-switcher-Bridging-Header.h";
@@ -543,7 +543,7 @@
 				CODE_SIGN_ENTITLEMENTS = "notion-account-switcher/notion_account_switcher.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 0.10;
+				CURRENT_PROJECT_VERSION = 0.11;
 				DEVELOPMENT_TEAM = T7Q559P978;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "notion-account-switcher/Info.plist";
@@ -552,7 +552,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.10;
+				MARKETING_VERSION = 0.11;
 				PRODUCT_BUNDLE_IDENTIFIER = io.sanghun.notion.account.switcher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "notion-account-switcher-Bridging-Header.h";
