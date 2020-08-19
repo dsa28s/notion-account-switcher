@@ -1,3 +1,13 @@
+🥳 NOW, THIS PROJECT IS DEPRECATED! 🥳
+---
+The feature has been officially added. Therefore, this project is no longer maintained.
+Thank you!
+
+노션 공식으로 해당 기능이 2020-08-19 에 추가되었다고 해요 :) 따라서 해당 프로젝트의 유지보수는 더이상 되지 않습니다.
+그동안 이 프로젝트를 사랑해주신 모든 분들께 감사의 말씀 드려요!!
+
+<br>
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/dsa28s/notion-account-switcher/master/Resources/icons.png" width="100" height="100">
 </p>
